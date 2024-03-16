@@ -14,4 +14,19 @@ public class CharacterSO : ScriptableObject
 
     [SerializeField]
     private List<string> characterHelps;
+
+    public string getName()
+    {
+        return characterName;
+    }
+
+    public List<string> getConversations()
+    {
+        return characterConversations;
+    }
+
+    public List<string> getHelps()
+    {
+        return characterHelps;
+    }
 }

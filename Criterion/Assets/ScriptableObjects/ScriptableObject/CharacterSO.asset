@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: CharacterSO
+  m_EditorClassIdentifier: 
+  characterName: cyborg zor
+  characterConversations:
+  - "Yemi\u015F yemeyi severim"
+  - "Her g\xFCn mutlaka uyurum"
+  - "Spor yapmay\u0131 severim"
+  characterHelps:
+  - "Karn\u0131m A\u011Fr\u0131yor"
+  - "A\u011F\u0131rl\u0131klar\u0131m\u0131 kaybettim"
+  - Ve kayboldum
