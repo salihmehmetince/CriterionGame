@@ -23,6 +23,15 @@ public class L1PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask groundMask;
 
+    [SerializeField]
+    private LayerMask buildingMask;
+
+    [SerializeField]
+    private LayerMask vehicleMask;
+
+    [SerializeField]
+    private LayerMask natureMask;
+
     private bool isGrounded;
 
     private float jumpHeight = 5f;
@@ -35,7 +44,7 @@ public class L1PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position,groundDistance,groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position,groundDistance,groundMask|buildingMask|vehicleMask|natureMask);
 
         if(isGrounded&& velocity.y<0)
         {

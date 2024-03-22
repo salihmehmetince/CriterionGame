@@ -1755,6 +1755,7 @@ GameObject:
   - component: {fileID: 8488868763086244939}
   - component: {fileID: 6356666975838973426}
   - component: {fileID: 8912782297873924974}
+  - component: {fileID: 7141335482591829416}
   m_Layer: 0
   m_Name: Character2
   m_TagString: Character
@@ -1839,10 +1840,31 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 3
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Center: {x: 0, y: 3, z: 0}
+--- !u!95 &7141335482591829416
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915075188982740589}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 7d975ae0b8c7db0478e88d051cedeb33, type: 3}
+  m_Controller: {fileID: 9100000, guid: 5e88185dd86561e43a3f4aba90a95ff3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8146658263875667888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,7 +2139,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -4910155946660035214, guid: 8772aaa752ade8343a82d33af72d1f38, type: 3}
+  m_Mesh: {fileID: -4910155946660035214, guid: f3db50b0e9d95cd41bf4437ee3ea2fd3, type: 3}
   m_Bones:
   - {fileID: 5605788840930189643}
   - {fileID: 1170894793616322674}

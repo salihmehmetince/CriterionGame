@@ -1727,7 +1727,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -4910155946660035214, guid: 8772aaa752ade8343a82d33af72d1f38, type: 3}
+  m_Mesh: {fileID: -4910155946660035214, guid: f3db50b0e9d95cd41bf4437ee3ea2fd3, type: 3}
   m_Bones:
   - {fileID: 5813733112303478880}
   - {fileID: 962255927243880793}
@@ -1921,6 +1921,7 @@ GameObject:
   - component: {fileID: 8589713823285436807}
   - component: {fileID: 3549934777242431541}
   - component: {fileID: 5542565350485776657}
+  - component: {fileID: 2948430554418097989}
   m_Layer: 0
   m_Name: Character1
   m_TagString: Character
@@ -1965,10 +1966,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 3
   m_Height: 0
   m_Direction: 1
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!54 &3549934777242431541
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2009,6 +2010,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSO: {fileID: 0}
+--- !u!95 &2948430554418097989
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120758430243405638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 7d975ae0b8c7db0478e88d051cedeb33, type: 3}
+  m_Controller: {fileID: 9100000, guid: a5f9b9a1799110c448c87416e7bfd622, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8525501333148046816
 GameObject:
   m_ObjectHideFlags: 0

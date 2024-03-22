@@ -1,0 +1,41 @@
+1.problem 1.bölgede :Düşünülüyor
+
+2.problem 2.bölgede :Çalınmış tahtalar
+
+3.problem 3.bölgede :Düşünülüyor
+
+4.problem 4.bölgede :Benzin bitmiş
+
+5.problem 5.bölgede :Düşünülüyor
+
+6.problem 6.bölgede :Çalınmış alet çantası
+
+7.problem 8.bölgede :Çalınmış araba
+
+8.problem 9.bölgede :Fabrika için usta lazım
+
+9.problem 10.bölgede :Sebzeler için su ihtiyacı
+
+10.problem 10.bölgede :9.problemin çözülmesi
+
+11.problem 11.bölgede :Kayıp anahtar
+
+12.problem 12.bölgede :Benzin istasyonuna takviye
+
+13.problem 13.bölgede :Çalınmış başka bir araba
+
+14.problem 14.bölgede :Garajın önünde bozulmuş kamyon
+
+15.problem 14.bölgede :Araç ihtiyacı
+
+16.problem 16.bölgede :İş yeri için gelmeyen malzemeler
+
+17.problem 17.bölgede :19. bölgeye ulaştırılması gereken helikopter
+
+18.problem 18.bölgede :Fabrikaya gitmesi gereken bozuk bas
+
+19.problem 17.bölgede :19. bölgeden gelmesi gereken helikopter
+
+20.problem 18.bölgede :9. bölgeden ulaşması gereken yiyecek kamyonu
+
+21.problem 11.bölgede :Toplanıp getirilmesi gereken meyveler

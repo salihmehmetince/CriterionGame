@@ -44,6 +44,15 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""04badada-510f-4e7f-9c4a-a60cdbcc21f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,109 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23c64e78-38a6-4c93-9760-f96dbdd9daf1"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Car"",
+            ""id"": ""930b76cd-96e0-4889-a5b2-9ef3d134afc8"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""7f201e94-361c-420b-a75d-0dff86dde093"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Horn"",
+                    ""type"": ""Button"",
+                    ""id"": ""3be667ba-0439-4664-b74f-157a8112823f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1992eb1a-d892-42a4-9af4-97ed9157e313"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""95fb85cc-5fad-4b2b-8cef-1f20a64dcf7e"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""59a29ece-4467-4dbf-9e1f-362215406b8c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""93e8cdb1-1e0a-4590-9dc9-abcedad7ee34"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""6c4ac96d-f9b3-481d-bfb1-9a5b5c7137fd"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""51463b5a-96c4-4eef-a112-89ad8e27a0be"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -122,6 +234,11 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        // Car
+        m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
+        m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
+        m_Car_Horn = m_Car.FindAction("Horn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,12 +302,14 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
         private @InputActs m_Wrapper;
         public PlayerActions(@InputActs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -206,6 +325,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -216,6 +338,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -233,9 +358,69 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Car
+    private readonly InputActionMap m_Car;
+    private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
+    private readonly InputAction m_Car_Movement;
+    private readonly InputAction m_Car_Horn;
+    public struct CarActions
+    {
+        private @InputActs m_Wrapper;
+        public CarActions(@InputActs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Car_Movement;
+        public InputAction @Horn => m_Wrapper.m_Car_Horn;
+        public InputActionMap Get() { return m_Wrapper.m_Car; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CarActions set) { return set.Get(); }
+        public void AddCallbacks(ICarActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CarActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CarActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+            @Horn.started += instance.OnHorn;
+            @Horn.performed += instance.OnHorn;
+            @Horn.canceled += instance.OnHorn;
+        }
+
+        private void UnregisterCallbacks(ICarActions instance)
+        {
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+            @Horn.started -= instance.OnHorn;
+            @Horn.performed -= instance.OnHorn;
+            @Horn.canceled -= instance.OnHorn;
+        }
+
+        public void RemoveCallbacks(ICarActions instance)
+        {
+            if (m_Wrapper.m_CarActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICarActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CarActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CarActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CarActions @Car => new CarActions(this);
     public interface IPlayerActions
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+    }
+    public interface ICarActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnHorn(InputAction.CallbackContext context);
     }
 }

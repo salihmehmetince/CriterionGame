@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class L1PlayerInteractions : MonoBehaviour
 {
-    
+    private void Start()
+    {
+        
+    }
 
 }
