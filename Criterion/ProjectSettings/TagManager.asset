@@ -8,6 +8,9 @@ TagManager:
   - CinemachineTarget
   - Character
   - Car
+  - Helicopter
+  - Aircraft
+  - Ground
   layers:
   - Default
   - TransparentFX

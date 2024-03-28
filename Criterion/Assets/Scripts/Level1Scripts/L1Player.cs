@@ -53,6 +53,11 @@ public class L1Player : MonoBehaviour
 
     private float gravity = -49.5f;
 
+    private const string FINALHELICOPTER = "Helicopter";
+
+    private const string FINALAIRCRAFT = "Aircraft";
+
+
     private void OnTriggerEnter(Collider other)
     {
         GameObject gObject = other.gameObject;
@@ -65,11 +70,35 @@ public class L1Player : MonoBehaviour
         {
             recognizeCar(gObject);
         }
+        else if(gObject.tag==FINALHELICOPTER)
+        {
+            recognizeHelicopter(gObject);
+        }
+        else if(gObject.tag==FINALAIRCRAFT)
+        {
+            recognizePlane(gObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        forgetCharacter();
+        GameObject gObject = other.gameObject;
+        if (gObject.tag == FINALCHARACTER)
+        {
+            forgetCharacter();
+        }
+        else if (gObject.tag == FINALCAR)
+        {
+            forgetCar();
+        }
+        else if (gObject.tag == FINALHELICOPTER)
+        {
+            forgetHelicopter();
+        }
+        else if (gObject.tag == FINALAIRCRAFT)
+        {
+            forgetPlane();
+        }
     }
 
     private void Start()
@@ -100,6 +129,14 @@ public class L1Player : MonoBehaviour
         else if(interactionObject.tag==FINALCAR)
         {
             driveCar();
+        }
+        else if(interactionObject.tag == FINALHELICOPTER)
+        {
+            driveHelicopter();
+        }
+        else if(interactionObject.tag == FINALAIRCRAFT)
+        {
+            drivePlane();
         }
     }
 
@@ -142,6 +179,7 @@ public class L1Player : MonoBehaviour
     private void forgetCharacter()
     {
         canInteract = false;
+        interactionObject = null;
         Transform canvas = transform.GetChild(3);
         canvas.gameObject.SetActive(false);
     }
@@ -152,14 +190,43 @@ public class L1Player : MonoBehaviour
         canInteract = true;
     }
 
+    private void recognizeHelicopter(GameObject gObject)
+    {
+        interactionObject = gObject;
+        canInteract = true;
+    }
+
     private void driveCar()
     {
         transform.SetParent(interactionObject.transform);
-        transform.localPosition=new Vector3(0f, 0.5f, 0.3f);
+        Transform playerPosition=interactionObject.transform.GetChild(2);
+        transform.localPosition = playerPosition.localPosition;
         transform.localRotation = Quaternion.identity;
         enabled = false;
         gameInput.getInputActs().Player.Disable();
         interactionObject.GetComponent<L1Car>().enabled = true;
+    }
+
+    private void driveHelicopter()
+    {
+        transform.SetParent(interactionObject.transform);
+        Transform playerPosition = interactionObject.transform.GetChild(2);
+        transform.localPosition = playerPosition.localPosition;
+        transform.localRotation = Quaternion.identity;
+        enabled = false;
+        gameInput.getInputActs().Player.Disable();
+        interactionObject.GetComponent<L1Helicopter>().enabled = true;
+    }
+
+    private void drivePlane()
+    {
+        transform.SetParent(interactionObject.transform);
+        Transform playerPosition = interactionObject.transform.GetChild(2);
+        transform.localPosition = playerPosition.localPosition;
+        transform.localRotation = Quaternion.identity;
+        enabled = false;
+        gameInput.getInputActs().Player.Disable();
+        interactionObject.GetComponent<L1Plane>().enabled = true;
     }
 
     private void move()
@@ -194,4 +261,31 @@ public class L1Player : MonoBehaviour
 
     }
 
+    private void recognizePlane(GameObject gObject)
+    {
+        interactionObject = gObject;
+        canInteract = true;
+    }
+
+    private void forgetCar()
+    {
+        canInteract = false;
+        interactionObject = null;
+        Transform canvas = transform.GetChild(3);
+        canvas.gameObject.SetActive(false);
+    }
+    private void forgetHelicopter()
+    {
+        canInteract = false;
+        interactionObject = null;
+        Transform canvas = transform.GetChild(3);
+        canvas.gameObject.SetActive(false);
+    }
+    private void forgetPlane()
+    {
+        canInteract = false;
+        interactionObject = null;
+        Transform canvas = transform.GetChild(3);
+        canvas.gameObject.SetActive(false);
+    }
 }

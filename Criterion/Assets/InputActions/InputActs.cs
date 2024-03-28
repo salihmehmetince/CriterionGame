@@ -226,6 +226,192 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Helicopter"",
+            ""id"": ""a901604a-3e45-49c1-a20a-47b53a6b3842"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""d603b419-d25c-4283-a935-742b8d5e61c5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Altitude"",
+                    ""type"": ""Value"",
+                    ""id"": ""77651ca2-4457-4b03-ac1a-7715b7ea7bea"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""54d08fa0-fd90-4d9f-92c3-f31c6d891b43"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""c3ee168e-0e75-433f-afaf-982b44545f39"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""bdb85ae9-29af-432c-a999-f9f4136dbb02"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""28113c1d-857c-4e9f-8844-72fe0a847e71"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""496ec617-bfcf-4b6c-b231-1d28a153075d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""TY"",
+                    ""id"": ""50588176-2fbb-42b1-95f9-72e010534e1a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Altitude"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""5742f9dc-c791-4c10-9240-d50f3cf7685c"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Altitude"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5620f352-4c42-4a3d-8e55-4c140c375757"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Altitude"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Plane"",
+            ""id"": ""5eb301ec-6508-42c9-a651-9b06c9fe0acc"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""4b59bbc0-2459-452c-bd1b-1efb36f5fb24"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""6fe4af36-7f76-4b15-ab8e-0a6fef028ea1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""c9bb4720-8e2c-4ed7-884b-0b7cc694ec84"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""0b72b349-678e-4411-afbe-45a297c1e13b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""3dc61234-2ed9-404f-9071-277aced719cd"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""965e2349-1c5a-40a0-a32e-6575b119c8fa"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -239,6 +425,13 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
         m_Car_Horn = m_Car.FindAction("Horn", throwIfNotFound: true);
+        // Helicopter
+        m_Helicopter = asset.FindActionMap("Helicopter", throwIfNotFound: true);
+        m_Helicopter_Movement = m_Helicopter.FindAction("Movement", throwIfNotFound: true);
+        m_Helicopter_Altitude = m_Helicopter.FindAction("Altitude", throwIfNotFound: true);
+        // Plane
+        m_Plane = asset.FindActionMap("Plane", throwIfNotFound: true);
+        m_Plane_Movement = m_Plane.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -412,6 +605,106 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         }
     }
     public CarActions @Car => new CarActions(this);
+
+    // Helicopter
+    private readonly InputActionMap m_Helicopter;
+    private List<IHelicopterActions> m_HelicopterActionsCallbackInterfaces = new List<IHelicopterActions>();
+    private readonly InputAction m_Helicopter_Movement;
+    private readonly InputAction m_Helicopter_Altitude;
+    public struct HelicopterActions
+    {
+        private @InputActs m_Wrapper;
+        public HelicopterActions(@InputActs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Helicopter_Movement;
+        public InputAction @Altitude => m_Wrapper.m_Helicopter_Altitude;
+        public InputActionMap Get() { return m_Wrapper.m_Helicopter; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(HelicopterActions set) { return set.Get(); }
+        public void AddCallbacks(IHelicopterActions instance)
+        {
+            if (instance == null || m_Wrapper.m_HelicopterActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HelicopterActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+            @Altitude.started += instance.OnAltitude;
+            @Altitude.performed += instance.OnAltitude;
+            @Altitude.canceled += instance.OnAltitude;
+        }
+
+        private void UnregisterCallbacks(IHelicopterActions instance)
+        {
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+            @Altitude.started -= instance.OnAltitude;
+            @Altitude.performed -= instance.OnAltitude;
+            @Altitude.canceled -= instance.OnAltitude;
+        }
+
+        public void RemoveCallbacks(IHelicopterActions instance)
+        {
+            if (m_Wrapper.m_HelicopterActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IHelicopterActions instance)
+        {
+            foreach (var item in m_Wrapper.m_HelicopterActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_HelicopterActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public HelicopterActions @Helicopter => new HelicopterActions(this);
+
+    // Plane
+    private readonly InputActionMap m_Plane;
+    private List<IPlaneActions> m_PlaneActionsCallbackInterfaces = new List<IPlaneActions>();
+    private readonly InputAction m_Plane_Movement;
+    public struct PlaneActions
+    {
+        private @InputActs m_Wrapper;
+        public PlaneActions(@InputActs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Plane_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Plane; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlaneActions set) { return set.Get(); }
+        public void AddCallbacks(IPlaneActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlaneActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlaneActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+        }
+
+        private void UnregisterCallbacks(IPlaneActions instance)
+        {
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+        }
+
+        public void RemoveCallbacks(IPlaneActions instance)
+        {
+            if (m_Wrapper.m_PlaneActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlaneActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlaneActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlaneActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlaneActions @Plane => new PlaneActions(this);
     public interface IPlayerActions
     {
         void OnInteract(InputAction.CallbackContext context);
@@ -422,5 +715,14 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnHorn(InputAction.CallbackContext context);
+    }
+    public interface IHelicopterActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnAltitude(InputAction.CallbackContext context);
+    }
+    public interface IPlaneActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
     }
 }

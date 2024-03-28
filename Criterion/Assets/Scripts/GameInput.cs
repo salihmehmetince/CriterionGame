@@ -27,6 +27,8 @@ public class GameInput : MonoBehaviour
         inputActs.Player.Jump.performed+= onJumpPerformed;
         inputActs.Car.Enable();
         inputActs.Car.Horn.performed += onHornPerformed;
+        inputActs.Helicopter.Enable();
+        inputActs.Plane.Enable();
     }
 
     private void onHornPerformed(InputAction.CallbackContext obj)
@@ -63,6 +65,25 @@ public class GameInput : MonoBehaviour
         return inputActs;
     }
 
+    public float getHelicopterAltitude()
+    {
+        float direction = inputActs.Helicopter.Altitude.ReadValue<float>();
+        return direction;
+    }
+
+    public Vector2 getHelicopterMovementVectorNormalized()
+    {
+        Vector2 movement = inputActs.Helicopter.Movement.ReadValue<Vector2>();
+        movement = movement.normalized;
+        return movement;
+    }
+
+    public Vector2 getPlaneMovementVectorNormalized()
+    {
+        Vector2 movement = inputActs.Plane.Movement.ReadValue<Vector2>();
+        movement = movement.normalized;
+        return movement;
+    }
 }
 
 

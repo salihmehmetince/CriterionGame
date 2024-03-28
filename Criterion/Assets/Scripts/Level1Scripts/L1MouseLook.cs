@@ -20,6 +20,12 @@ public class L1MouseLook : MonoBehaviour
     private GameInput gameInput;
 
     private const string FINALCAR = "Car";
+
+    private const string FINALHELICOPTER = "Helicopter";
+
+    private const string FINALAIRCRAFT = "Aircraft";
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +41,14 @@ public class L1MouseLook : MonoBehaviour
             if(parentTransform.tag==FINALCAR)
             {
                 carMouseLook();
+            }
+            else if(parentTransform.tag == FINALHELICOPTER)
+            {
+                helicopterMouseLook();
+            }
+            else if (parentTransform.tag == FINALAIRCRAFT)
+            {
+                planeMouseLook();
             }
         }
         else
@@ -57,6 +71,32 @@ public class L1MouseLook : MonoBehaviour
     }
 
     private void carMouseLook()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        rotationX -= mouseY;
+        rotationY += mouseX;
+        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+        rotationY = Mathf.Clamp(rotationY, -90f, 90f);
+        transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
+
+    }
+
+    private void helicopterMouseLook()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        rotationX -= mouseY;
+        rotationY += mouseX;
+        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+        rotationY = Mathf.Clamp(rotationY, -90f, 90f);
+        transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
+
+    }
+
+    private void planeMouseLook()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
