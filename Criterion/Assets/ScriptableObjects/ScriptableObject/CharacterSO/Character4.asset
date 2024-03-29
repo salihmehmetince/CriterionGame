@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character4
+  m_EditorClassIdentifier: 
+  characterName: Character4
+  characterConversations:
+  - Wow, you are a diver.
+  - What are you doin here? You should be in the ocean.
+  - Nice submarine.
+  characterHelps:
+  - Can i help you?
+  - What did happen?
+  - How many?
+  characterConversationAnswers:
+  - Correct.
+  - I wish.
+  - Ehh not bad.
+  characterHelpAnswers:
+  - That would be great.
+  - Some of it's pieces are lost.
+  - 3 pieces.
+  missionNumber: 2
+  solutionAnswers:
+  - Here. Now you can go to the ocean.
+  apriciates:
+  - You are fantastic.

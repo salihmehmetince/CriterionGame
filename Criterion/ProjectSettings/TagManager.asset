@@ -11,6 +11,13 @@ TagManager:
   - Helicopter
   - Aircraft
   - Ground
+  - ForgottenTruck
+  - SideCharacter
+  - WoodsTruck
+  - Pieces
+  - JerryCan
+  - Toolbox
+  - HardworkingCar
   layers:
   - Default
   - TransparentFX

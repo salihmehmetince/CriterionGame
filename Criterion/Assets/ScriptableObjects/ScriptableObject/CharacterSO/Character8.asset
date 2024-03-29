@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character8
+  m_EditorClassIdentifier: 
+  characterName: Character8
+  characterConversations:
+  - Your garden looks beautiful.
+  - What about sky?
+  - Can you make a show flight?
+  characterHelps:
+  - There is a problem?
+  - What does the tool bag look like?
+  - Prepare fo the show flight. I will be back with the bacg.
+  characterConversationAnswers:
+  - I like nature.
+  - I think i like it more than garden.
+  - No, I am afraid.
+  characterHelpAnswers:
+  - Yes, I lost my tools bag.
+  - A brown regular tool bag
+  - Alright.
+  missionNumber: 5
+  solutionAnswers:
+  - Here it is.
+  apriciates:
+  - What? I didn't even think that you will.

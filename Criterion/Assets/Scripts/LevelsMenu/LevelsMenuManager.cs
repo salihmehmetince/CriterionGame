@@ -163,8 +163,8 @@ public class LevelsMenuManager : MonoBehaviour
 
     private void handleInteract()
     {
-        SceneManager.LoadScene("Level"+(selectedLevelIndex+1)+"Scene");
-        Debug.Log("Level" + (selectedLevelIndex + 1) + "Scene");
+        SceneManager.LoadScene("Level"+(selectedLevelIndex+1)+"StoryScene");
+        Debug.Log("Level" + (selectedLevelIndex + 1) + "StoryScene");
 
     }
 

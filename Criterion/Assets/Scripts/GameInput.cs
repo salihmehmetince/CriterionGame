@@ -18,17 +18,50 @@ public class GameInput : MonoBehaviour
 
     public event EventHandler onHorn;
 
+    public event EventHandler<onChooseEventArgs> onChoose;
 
+    public event EventHandler onCarInteract;
+
+    public event EventHandler onHelicopterInteract;
+
+    public class onChooseEventArgs : EventArgs
+    {
+        private Vector3 choose;
+
+        public Vector3 Choose
+        {
+            get { return choose; }
+            set { choose = value; }
+        }
+    }
     private void Awake()
     {
         inputActs=new InputActs();
         inputActs.Player.Enable();
         inputActs.Player.Interact.performed += onInteractPerformed;
         inputActs.Player.Jump.performed+= onJumpPerformed;
+        inputActs.Player.Choose.performed += onChoosePerformed;
         inputActs.Car.Enable();
         inputActs.Car.Horn.performed += onHornPerformed;
+        inputActs.Car.Interact.performed+=onCarInteractPerformed;
         inputActs.Helicopter.Enable();
+        inputActs.Helicopter.Interact.performed += onHelicopterInteracted;
         inputActs.Plane.Enable();
+    }
+
+    private void onHelicopterInteracted(InputAction.CallbackContext obj)
+    {
+        onHelicopterInteract?.Invoke(this,EventArgs.Empty);
+    }
+
+    private void onCarInteractPerformed(InputAction.CallbackContext obj)
+    {
+        onCarInteract?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void onChoosePerformed(InputAction.CallbackContext obj)
+    {
+        onChoose?.Invoke(this,new onChooseEventArgs { Choose=inputActs.Player.Choose.ReadValue<Vector3>() });
     }
 
     private void onHornPerformed(InputAction.CallbackContext obj)

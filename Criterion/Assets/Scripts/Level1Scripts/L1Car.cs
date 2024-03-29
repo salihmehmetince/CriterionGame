@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -33,6 +34,7 @@ public class L1Car : MonoBehaviour
 
     private void Start()
     {
+        gameInput.onCarInteract += onCarInteracted;
         Transform steeringWheel=transform.GetChild(0);
         steeringWheel.gameObject.SetActive(false);
         characterController = GetComponent<CharacterController>();
@@ -43,6 +45,11 @@ public class L1Car : MonoBehaviour
         frontRightWheel = wheels.GetChild(1);
         backLeftWheel = wheels.GetChild(2);
         backRightWheel = wheels.GetChild(3);
+    }
+
+    private void onCarInteracted(object sender, EventArgs e)
+    {
+        liveCar();
     }
 
     private void Update()
@@ -129,9 +136,6 @@ public class L1Car : MonoBehaviour
                 speed =maxBackSpeed;
             }
         }
-
-        Debug.Log(z);
-        Debug.Log(speed);
         
         float turnTo = x*45f;
         Quaternion turnT =Quaternion.Euler(frontLeftWheel.eulerAngles.x+ z*45f,turnTo,0f);
@@ -163,5 +167,16 @@ public class L1Car : MonoBehaviour
 
         Vector3 move = transform.forward * speed + transform.right* speed * Mathf.Sin((Mathf.PI / 180) * turnTo);
         characterController.Move(move *Time.deltaTime);
+    }
+
+    public void liveCar()
+    {
+        Transform player = transform.GetChild(transform.childCount - 1);
+        player.parent = null;
+        player.position = new Vector3(player.position.x + 20f, player.position.y, player.position.z);
+        player.GetComponent<L1Player>().enabled = true;
+        player.GetComponent<L1Player>().enablePlayerInputActions();
+        gameInput.getInputActs().Car.Disable();
+        enabled = false;
     }
 }

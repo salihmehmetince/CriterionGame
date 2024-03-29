@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character5
+  m_EditorClassIdentifier: 
+  characterName: Character5
+  characterConversations:
+  - Yov man What are waiting?
+  - You have two of them.
+  - It must be expensive.
+  characterHelps:
+  - May i help?
+  - Vehicle...
+  - I will try my best.
+  characterConversationAnswers:
+  - A vehicle, It deos not matter what it is.
+  - No oil, no vehicle.
+  - "Don't even mention about it. \u0131 don't wanna remember."
+  characterHelpAnswers:
+  - If you got a vehicle, why not?
+  - Vehicle...
+  - Thank you.
+  missionNumber: 3
+  solutionAnswers:
+  - I hope you are ready for it.
+  apriciates:
+  - Oh thank you a lot.

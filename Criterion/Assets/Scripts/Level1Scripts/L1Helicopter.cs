@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,7 @@ public class L1Helicopter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameInput.onHelicopterInteract += onHelicopterInteracted;
         Transform steeringWheel = transform.GetChild(0);
         steeringWheel.gameObject.SetActive(false);
         characterController = GetComponent<CharacterController>();
@@ -41,6 +43,11 @@ public class L1Helicopter : MonoBehaviour
         wings = transform.GetChild(1);
         frontWing = wings.GetChild(0);
         backWing = wings.GetChild(1);
+    }
+
+    private void onHelicopterInteracted(object sender, EventArgs e)
+    {
+        liveHelicopter();
     }
 
     // Update is called once per frame
@@ -154,5 +161,16 @@ public class L1Helicopter : MonoBehaviour
 
         Vector3 move = transform.right * speed + transform.forward * speed * Mathf.Sin((Mathf.PI / 180) * turnTo)+transform.up*altitudeSpeed;
         characterController.Move(move * Time.deltaTime);
+    }
+
+    private void liveHelicopter()
+    {
+        Transform player = transform.GetChild(transform.childCount - 1);
+        player.parent = null;
+        player.position = new Vector3(player.position.x + 20f, player.position.y, player.position.z);
+        player.GetComponent<L1Player>().enabled = true;
+        player.GetComponent<L1Player>().enablePlayerInputActions();
+        gameInput.getInputActs().Helicopter.Disable();
+        enabled = false;
     }
 }

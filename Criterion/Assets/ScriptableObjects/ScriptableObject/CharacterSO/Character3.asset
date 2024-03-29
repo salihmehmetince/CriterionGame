@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character3
+  m_EditorClassIdentifier: 
+  characterName: Character3
+  characterConversations:
+  - Wow, you are the baker.
+  - Can you give me some bread?
+  - Can i get anything else?
+  characterHelps:
+  - Is there a problem?
+  - How can i help you?
+  - Anything else?
+  characterConversationAnswers:
+  - The baker, Am I famous?
+  - Unfortunately.
+  - Only apple.
+  characterHelpAnswers:
+  - Unfortunately, big one. I have lost my woods.
+  - If you find them...
+  - No, not necessery.
+  missionNumber: 1
+  solutionAnswers:
+  - It wasn't easy but...
+  apriciates:
+  - "When i bake, \u0131 think the same"

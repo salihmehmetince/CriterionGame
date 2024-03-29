@@ -53,6 +53,15 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Choose"",
+                    ""type"": ""Value"",
+                    ""id"": ""89dd4c43-90b6-4534-9028-e5523c3e08bb"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,83 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""3D Vector"",
+                    ""id"": ""8cd4f563-54db-431f-a0cc-537684ced9e7"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""fe00b40d-aeac-4aad-8e49-ed4a312b3b8c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""fa6cbe11-eba2-41f7-a6c1-cff88c5524da"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""d22217e5-eea0-4947-aff5-bc77a9c9ab22"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""fe7fdc66-1ac9-436e-a0f0-eeb4e80682f8"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""af51a7c3-83ca-40a4-9d69-0376903a37dc"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""c416dcad-09f0-44a8-973c-2ddb6dc0776d"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -152,6 +238,15 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""name"": ""Horn"",
                     ""type"": ""Button"",
                     ""id"": ""3be667ba-0439-4664-b74f-157a8112823f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7e15b34-0ff7-4c6a-943b-e52423faac53"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -224,6 +319,17 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7486712b-87aa-4018-a36c-f1192d094028"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -248,6 +354,15 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d1cd267-620d-4276-9ae5-2c8a2f2ff105"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -338,6 +453,17 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""action"": ""Altitude"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""899fe255-5502-40bc-8c03-4a37ec8f58c9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -353,6 +479,15 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""16d1591e-474d-4515-9d45-abc25943bcc1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -410,6 +545,17 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5db8c93b-03fc-4a4c-be5a-baf07cc2793f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -421,17 +567,21 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Choose = m_Player.FindAction("Choose", throwIfNotFound: true);
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
         m_Car_Horn = m_Car.FindAction("Horn", throwIfNotFound: true);
+        m_Car_Interact = m_Car.FindAction("Interact", throwIfNotFound: true);
         // Helicopter
         m_Helicopter = asset.FindActionMap("Helicopter", throwIfNotFound: true);
         m_Helicopter_Movement = m_Helicopter.FindAction("Movement", throwIfNotFound: true);
         m_Helicopter_Altitude = m_Helicopter.FindAction("Altitude", throwIfNotFound: true);
+        m_Helicopter_Interact = m_Helicopter.FindAction("Interact", throwIfNotFound: true);
         // Plane
         m_Plane = asset.FindActionMap("Plane", throwIfNotFound: true);
         m_Plane_Movement = m_Plane.FindAction("Movement", throwIfNotFound: true);
+        m_Plane_Interact = m_Plane.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -496,6 +646,7 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Choose;
     public struct PlayerActions
     {
         private @InputActs m_Wrapper;
@@ -503,6 +654,7 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Choose => m_Wrapper.m_Player_Choose;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -521,6 +673,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Choose.started += instance.OnChoose;
+            @Choose.performed += instance.OnChoose;
+            @Choose.canceled += instance.OnChoose;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -534,6 +689,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Choose.started -= instance.OnChoose;
+            @Choose.performed -= instance.OnChoose;
+            @Choose.canceled -= instance.OnChoose;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -557,12 +715,14 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
     private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
     private readonly InputAction m_Car_Movement;
     private readonly InputAction m_Car_Horn;
+    private readonly InputAction m_Car_Interact;
     public struct CarActions
     {
         private @InputActs m_Wrapper;
         public CarActions(@InputActs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Car_Movement;
         public InputAction @Horn => m_Wrapper.m_Car_Horn;
+        public InputAction @Interact => m_Wrapper.m_Car_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -578,6 +738,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Horn.started += instance.OnHorn;
             @Horn.performed += instance.OnHorn;
             @Horn.canceled += instance.OnHorn;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
@@ -588,6 +751,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Horn.started -= instance.OnHorn;
             @Horn.performed -= instance.OnHorn;
             @Horn.canceled -= instance.OnHorn;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -611,12 +777,14 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
     private List<IHelicopterActions> m_HelicopterActionsCallbackInterfaces = new List<IHelicopterActions>();
     private readonly InputAction m_Helicopter_Movement;
     private readonly InputAction m_Helicopter_Altitude;
+    private readonly InputAction m_Helicopter_Interact;
     public struct HelicopterActions
     {
         private @InputActs m_Wrapper;
         public HelicopterActions(@InputActs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Helicopter_Movement;
         public InputAction @Altitude => m_Wrapper.m_Helicopter_Altitude;
+        public InputAction @Interact => m_Wrapper.m_Helicopter_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Helicopter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -632,6 +800,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Altitude.started += instance.OnAltitude;
             @Altitude.performed += instance.OnAltitude;
             @Altitude.canceled += instance.OnAltitude;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IHelicopterActions instance)
@@ -642,6 +813,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Altitude.started -= instance.OnAltitude;
             @Altitude.performed -= instance.OnAltitude;
             @Altitude.canceled -= instance.OnAltitude;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IHelicopterActions instance)
@@ -664,11 +838,13 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Plane;
     private List<IPlaneActions> m_PlaneActionsCallbackInterfaces = new List<IPlaneActions>();
     private readonly InputAction m_Plane_Movement;
+    private readonly InputAction m_Plane_Interact;
     public struct PlaneActions
     {
         private @InputActs m_Wrapper;
         public PlaneActions(@InputActs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Plane_Movement;
+        public InputAction @Interact => m_Wrapper.m_Plane_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Plane; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -681,6 +857,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlaneActions instance)
@@ -688,6 +867,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlaneActions instance)
@@ -710,19 +892,23 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnChoose(InputAction.CallbackContext context);
     }
     public interface ICarActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnHorn(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IHelicopterActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnAltitude(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IPlaneActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
