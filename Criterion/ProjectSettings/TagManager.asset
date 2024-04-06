@@ -18,6 +18,8 @@ TagManager:
   - JerryCan
   - Toolbox
   - HardworkingCar
+  - BusWithoutDriver
+  - FactoryMechanic
   layers:
   - Default
   - TransparentFX

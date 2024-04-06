@@ -18,6 +18,7 @@ public class L1SolutitonPlace6 : MonoBehaviour
                 if(gObject.transform.GetChild(i).tag == FINALTOOLBOX)
                 {
                     Transform toolbox = gObject.transform.GetChild(i);
+                    toolbox.GetComponent<L1Toolbox>().enabled = false;
                     toolbox.SetParent(transform);
                     toolbox.localPosition = new Vector3(0f, 1f, 0f);
                     //gObject.transform.GetChild(4).SetParent(transform);
@@ -26,7 +27,7 @@ public class L1SolutitonPlace6 : MonoBehaviour
                     problemBox.gameObject.SetActive(false);
                     character.GetComponent<L1Character>().IsMissionOver = true;
                     enabled = false;
-                    break;
+                    return;
                 }
             }
         }

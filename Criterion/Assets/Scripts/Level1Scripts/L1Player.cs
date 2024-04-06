@@ -427,6 +427,7 @@ public class L1Player : MonoBehaviour
     private void recognizeCharacter(GameObject gObject)
     {
         interactionObject = gObject;
+        interactionObject.GetComponent<L1Character>().enabled = true;
         canInteract = true;
         this.characterSO = gObject.GetComponent<L1Character>().getCharacterSO();
     }
@@ -441,6 +442,7 @@ public class L1Player : MonoBehaviour
     {
         canChoose = false;
         canInteract = false;
+        interactionObject.GetComponent<L1Character>().enabled = false;
         interactionObject = null;
         Transform canvas = transform.GetChild(3);
         canvas.gameObject.SetActive(false);

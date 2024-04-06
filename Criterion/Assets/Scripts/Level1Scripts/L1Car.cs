@@ -55,6 +55,7 @@ public class L1Car : MonoBehaviour
     private void Update()
     {
         drive();
+        Debug.Log(transform.gameObject.name);
     }
 
     private void gameInputOnHorn(object sender, EventArgs e)
@@ -171,12 +172,24 @@ public class L1Car : MonoBehaviour
 
     public void liveCar()
     {
-        Transform player = transform.GetChild(transform.childCount - 1);
-        player.parent = null;
+        Debug.Log(transform.GetChildCount());
+        Transform player = null;
+        for (int i=0;i<transform.childCount;i++)
+        {
+            Debug.Log(transform.GetChild(i).tag);
+            if(transform.GetChild(i).tag==FINALPLAYER)
+            {
+                player = transform.GetChild(i);
+                Debug.Log("buldu");
+                break;
+            }
+
+        }
+        gameInput.getInputActs().Car.Disable();
         player.position = new Vector3(player.position.x + 20f, player.position.y, player.position.z);
         player.GetComponent<L1Player>().enabled = true;
         player.GetComponent<L1Player>().enablePlayerInputActions();
-        gameInput.getInputActs().Car.Disable();
+        player.parent = null;
         enabled = false;
     }
 }

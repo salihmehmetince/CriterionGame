@@ -2089,13 +2089,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8120758430243405638}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6267b6454f20f5d4a8c70b2a37380a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterSO: {fileID: 0}
   gameInput: {fileID: 0}
+  solutionPlace: {fileID: 0}
 --- !u!95 &2948430554418097989
 Animator:
   serializedVersion: 5
