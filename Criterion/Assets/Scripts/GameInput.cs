@@ -24,6 +24,8 @@ public class GameInput : MonoBehaviour
 
     public event EventHandler onHelicopterInteract;
 
+    public event EventHandler onPlaneInteract;
+
     public class onChooseEventArgs : EventArgs
     {
         private Vector3 choose;
@@ -47,6 +49,12 @@ public class GameInput : MonoBehaviour
         inputActs.Helicopter.Enable();
         inputActs.Helicopter.Interact.performed += onHelicopterInteracted;
         inputActs.Plane.Enable();
+        inputActs.Plane.Interact.performed += onPlaneInteracted;
+    }
+
+    private void onPlaneInteracted(InputAction.CallbackContext obj)
+    {
+        onPlaneInteract?.Invoke(this, EventArgs.Empty);
     }
 
     private void onHelicopterInteracted(InputAction.CallbackContext obj)

@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class L1Character : MonoBehaviour
+public class L1InteractableSideCharacters : MonoBehaviour
 {
     [SerializeField]
     private CharacterSO characterSO;
@@ -12,22 +12,22 @@ public class L1Character : MonoBehaviour
 
     private Animator animator;
 
-    private const string finalIsWalking = "IsWalking";
-
-    private bool isMissionStart = false;
-
     [SerializeField]
     private GameInput gameInput;
 
-    private Transform exclamationbox;
+    private bool isRightChoice = false;
 
     [SerializeField]
-    private GameObject solutionPlace;
+    private string answer;
+    private int maxAnswers = 6;
+    private int answerIndex = 0;
+    private string tryAnswer = "";
 
-    private bool isMissionOver=false;
+    [SerializeField]
+    private Transform mainCharacter;
+
     private void Start()
     {
-        exclamationbox = transform.GetChild(3);
         animator = GetComponent<Animator>();
         gameInput.onChoose += onChoosed;
     }
@@ -37,28 +37,32 @@ public class L1Character : MonoBehaviour
         if (e.Choose.x == 0 && e.Choose.y == 1 && e.Choose.z == 0)
         {
             Debug.Log("1");
-            
+            checkAnswer(1);
         }
         else if (e.Choose.x == 0 && e.Choose.y == -1 && e.Choose.z == 0)
         {
             Debug.Log("2");
+            checkAnswer(2);
         }
         else if (e.Choose.x == -1 && e.Choose.y == 0 && e.Choose.z == 0)
         {
             Debug.Log("3");
+            checkAnswer(3);
         }
         else if (e.Choose.x == 1 && e.Choose.y == 0 && e.Choose.z == 0)
         {
             Debug.Log("4");
-            startMission();
+            checkAnswer(4);
         }
         else if (e.Choose.x == 0 && e.Choose.y == 0 && e.Choose.z == 1)
         {
             Debug.Log("5");
+            checkAnswer(5);
         }
         else if (e.Choose.x == 0 && e.Choose.y == 0 && e.Choose.z == -1)
         {
             Debug.Log("6");
+            checkAnswer(6);
         }
     }
 
@@ -94,28 +98,61 @@ public class L1Character : MonoBehaviour
         speechBox.gameObject.SetActive(false);
     }
 
+    public bool IsRightChoice
+    {
+        get { return isRightChoice; }
+        set { isRightChoice = value; }
+    }
+
+    public string Answer
+    {
+        get { return answer; }
+        set { answer = value; }
+    }
+
+    private void checkAnswer(int answer)
+    {
+        Debug.Log("index:"+answerIndex);
+        if (answerIndex < maxAnswers-1)
+        {
+            answerIndex++;
+            tryAnswer += answer.ToString();
+            Debug.Log("index:" + answerIndex);
+        }
+        else if(answerIndex == maxAnswers - 1)
+        {
+            answerIndex++;
+            tryAnswer += answer.ToString();
+
+            if (this.answer == tryAnswer)
+            {
+                isRightChoice = true;
+                Debug.Log("doðru yol");
+                Debug.Log("index:" + answerIndex);
+                return;
+            }
+            else
+            {
+                tryAnswer = "";
+                answerIndex = 0;
+                Debug.Log("yanlýþ yol");
+                Debug.Log("index:" + answerIndex);
+            }
+        }
+    }
+
     public CharacterSO getCharacterSO()
     {
         return characterSO;
     }
 
-    private void startMission()
+    public Animator getAnimator()
     {
-        exclamationbox.gameObject.SetActive(true);
-        Debug.Log(exclamationbox.parent);
-        solutionPlace.SetActive(true);
+        return animator;
     }
-
-    public bool IsMissionOver
+    
+    public Transform getMainCharacter()
     {
-        get { return isMissionOver; }
-        set { isMissionOver = value; }
+        return mainCharacter;
     }
-
-    public bool IsMissionStart
-    {
-        get { return isMissionStart; }
-        set { isMissionStart = value; }
-    }
-
 }

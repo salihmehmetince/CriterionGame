@@ -13,6 +13,9 @@ public class L1SideCharacter : MonoBehaviour
     [SerializeField]
     private GameInput gameInput;
 
+    [SerializeField]
+    private GameObject mainMissionCharacter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -89,5 +92,10 @@ public class L1SideCharacter : MonoBehaviour
     public CharacterSO getCharacterSO()
     {
         return characterSO;
+    }
+
+    public GameObject getMainMissionCharacter()
+    {
+        return mainMissionCharacter;
     }
 }

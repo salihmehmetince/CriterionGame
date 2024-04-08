@@ -28,23 +28,25 @@ public class L1SolutionPlace3 : MonoBehaviour
                     }
                 }
 
-            if (hasPieces)
-            {
-                if(pieces.transform.childCount>=3)
+                if (hasPieces)
                 {
-                    pieces.SetParent(gObject.GetComponent<L1Player>().getmissions()[0].MissionCharacter.transform);
-                    Transform character = gObject.GetComponent<L1Player>().getmissions()[0].MissionCharacter.transform;
-                    Transform problemBox = character.transform.GetChild(3);
-                    problemBox.gameObject.SetActive(false);
-                    character.GetComponent<L1Character>().IsMissionOver = true;
-                    enabled = false;
-                    Debug.Log("success");
+                    if(pieces.transform.childCount>=3)
+                    {
+                    
+                        pieces.SetParent(gObject.GetComponent<L1Player>().getmissions()[0].MissionCharacter.transform);
+                        Transform character = gObject.GetComponent<L1Player>().getmissions()[0].MissionCharacter.transform;
+                        Transform problemBox = character.transform.GetChild(3);
+                        problemBox.gameObject.SetActive(false);
+                        character.GetComponent<L1Character>().IsMissionOver = true;
+                        gObject.GetComponent<L1Player>().getmissions().RemoveAt(0);
+                        enabled = false;
+                        Debug.Log("success");
+                    }
+                    else
+                    {
+                        Debug.Log("olmadý");
+                    }
                 }
-                else
-                {
-                    Debug.Log("olmadý");
-                }
-            }
 
         }
     }

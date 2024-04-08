@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
-  m_Name: Character6
+  m_Name: Character15
   m_EditorClassIdentifier: 
-  characterName: Character6
+  characterName: Character15
   characterConversations:
-  - Let me guess...
-  - Are you familiar.
-  - Nice house.
+  - What are you thinking about?
+  - Don't you have work to do?
+  - Can i be you customer?
   characterHelps:
-  - Are you okay?
-  - Anything else?
-  - Where can i find oil?
+  - What did happen?
+  - Do you know where they are?
+  - I will find.
   characterConversationAnswers:
-  - No, I don't.
-  - Yes, oil.
-  - Thanks. I have just painted.
+  - That what am i going to do?
+  - Unfortunately.
+  - Unfortunatey.
   characterHelpAnswers:
-  - I need oil.
-  - No, just it
-  - I know where it is but i need a vehicle. I am tired.
-  missionNumber: 3
+  - That group hide my foods.
+  - I have no idea.
+  - Thank you.
+  missionNumber: 11
   solutionAnswers:
-  - Spent cleverly.
+  - Now may i have some chickens?
   apriciates:
-  - Thanks again.
+  - Ofcourse whenever you want.

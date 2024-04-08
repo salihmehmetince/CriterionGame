@@ -165,12 +165,27 @@ public class L1Helicopter : MonoBehaviour
 
     private void liveHelicopter()
     {
-        Transform player = transform.GetChild(transform.childCount - 1);
-        player.parent = null;
+        Transform player = null;
+        player = GameObject.Find("Player").transform;
+        gameInput.getInputActs().Helicopter.Disable();
         player.position = new Vector3(player.position.x + 20f, player.position.y, player.position.z);
         player.GetComponent<L1Player>().enabled = true;
         player.GetComponent<L1Player>().enablePlayerInputActions();
-        gameInput.getInputActs().Helicopter.Disable();
+        player.parent = null;
         enabled = false;
+    }
+
+    public void enterHelicopter()
+    {
+        enabled = true;
+        Transform player = null;
+        player = GameObject.Find("Player").transform;
+        player.SetParent(transform);
+        Transform playerPosition = transform.GetChild(2);
+        player.localPosition = playerPosition.localPosition;
+        player.localRotation = Quaternion.identity;
+        player.GetComponent<L1Player>().enabled = false;
+        gameInput.getInputActs().Player.Disable();
+        gameInput.getInputActs().Helicopter.Enable();
     }
 }

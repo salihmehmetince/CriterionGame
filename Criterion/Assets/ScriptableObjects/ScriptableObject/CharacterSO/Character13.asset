@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
-  m_Name: Character6
+  m_Name: Character13
   m_EditorClassIdentifier: 
-  characterName: Character6
+  characterName: Character13
   characterConversations:
-  - Let me guess...
-  - Are you familiar.
-  - Nice house.
-  characterHelps:
-  - Are you okay?
-  - Anything else?
-  - Where can i find oil?
+  - They are sorry.
+  - Work is important.
+  - Are you angry?
+  - Will you come to factory?
+  - Don't you think you are priceless?
+  - They want you back.
+  characterHelps: []
   characterConversationAnswers:
-  - No, I don't.
-  - Yes, oil.
-  - Thanks. I have just painted.
-  characterHelpAnswers:
-  - I need oil.
-  - No, just it
-  - I know where it is but i need a vehicle. I am tired.
-  missionNumber: 3
+  - We will se.
+  - Yes but...
+  - Not to you.
+  - No.
+  - Yes, i do but they don't.
+  - I don't know.
+  characterHelpAnswers: []
+  missionNumber: 9
   solutionAnswers:
-  - Spent cleverly.
+  - 
   apriciates:
-  - Thanks again.
+  - 

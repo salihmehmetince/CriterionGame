@@ -26,6 +26,7 @@ public class L1SolutitonPlace6 : MonoBehaviour
                     Transform problemBox = character.transform.GetChild(3);
                     problemBox.gameObject.SetActive(false);
                     character.GetComponent<L1Character>().IsMissionOver = true;
+                    gObject.GetComponent<L1Player>().getmissions().RemoveAt(0);
                     enabled = false;
                     return;
                 }

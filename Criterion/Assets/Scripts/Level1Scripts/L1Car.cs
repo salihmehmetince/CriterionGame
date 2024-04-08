@@ -55,7 +55,6 @@ public class L1Car : MonoBehaviour
     private void Update()
     {
         drive();
-        Debug.Log(transform.gameObject.name);
     }
 
     private void gameInputOnHorn(object sender, EventArgs e)
@@ -165,31 +164,33 @@ public class L1Car : MonoBehaviour
         backLeftWheel.Rotate(new Vector3(z*45f,0f,0f)*Time.deltaTime,Space.Self);
         backRightWheel.Rotate(new Vector3(z*45f,0f,0f)*Time.deltaTime,Space.Self);
 
-
         Vector3 move = transform.forward * speed + transform.right* speed * Mathf.Sin((Mathf.PI / 180) * turnTo);
         characterController.Move(move *Time.deltaTime);
     }
 
     public void liveCar()
     {
-        Debug.Log(transform.GetChildCount());
         Transform player = null;
-        for (int i=0;i<transform.childCount;i++)
-        {
-            Debug.Log(transform.GetChild(i).tag);
-            if(transform.GetChild(i).tag==FINALPLAYER)
-            {
-                player = transform.GetChild(i);
-                Debug.Log("buldu");
-                break;
-            }
-
-        }
+        player = GameObject.Find("Player").transform;
         gameInput.getInputActs().Car.Disable();
         player.position = new Vector3(player.position.x + 20f, player.position.y, player.position.z);
         player.GetComponent<L1Player>().enabled = true;
         player.GetComponent<L1Player>().enablePlayerInputActions();
         player.parent = null;
         enabled = false;
+    }
+
+    public virtual void enterCar()
+    {
+        enabled = true;
+        Transform player = null;
+        player = GameObject.Find("Player").transform;
+        player.SetParent(transform);
+        Transform playerPosition= transform.GetChild(2);
+        player.localPosition = playerPosition.localPosition;
+        player.localRotation = Quaternion.identity;
+        player.GetComponent<L1Player>().enabled = false;
+        gameInput.getInputActs().Player.Disable();
+        gameInput.getInputActs().Car.Enable();
     }
 }

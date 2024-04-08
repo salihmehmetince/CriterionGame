@@ -18,7 +18,7 @@ public class L1SolutionPlace2 : MonoBehaviour
                 gObject.SetParent(transform);
                 gObject.localPosition = new Vector3(0.8f, 1f, -2f);
                 gObject.localRotation = Quaternion.identity;
-                Transform player = gObject.GetChild(gObject.childCount - 1);
+                Transform player = GameObject.Find("Player").transform;
                 Debug.Log(player.name);
                 gObject.GetComponent<L1Car>().liveCar();
                 gObject.GetComponent<L1Car>().enabled = false;
@@ -26,6 +26,7 @@ public class L1SolutionPlace2 : MonoBehaviour
                 Transform problemBox = character.transform.GetChild(3);
                 problemBox.gameObject.SetActive(false);
                 character.GetComponent<L1Character>().IsMissionOver = true;
+                player.GetComponent<L1Player>().getmissions().RemoveAt(0);
                 enabled = false;
             }
             else

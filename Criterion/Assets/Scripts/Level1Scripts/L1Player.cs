@@ -69,6 +69,9 @@ public class L1Player : MonoBehaviour
     private List<Mission> missions = new List<Mission>();
 
     private const string FINALSIDECHARACTER = "SideCharacter";
+
+    private const string FINALINTERACTABLESIDECHARACTER = "InteractableSideCharacter";
+
     public struct Mission
     {
         private int missionregion;
@@ -97,6 +100,10 @@ public class L1Player : MonoBehaviour
         {
             recognizeSideCharacter(gObject);
         }
+        else if(gObject.tag==FINALINTERACTABLESIDECHARACTER)
+        {
+            recognizeInteractableSideCharacter(gObject);
+        }
         else if(gObject.tag == FINALCAR)
         {
             recognizeCar(gObject);
@@ -121,6 +128,10 @@ public class L1Player : MonoBehaviour
         else if(gObject.tag==FINALSIDECHARACTER)
         {
             forgetSideCharacter();
+        }
+        else if(gObject.tag==FINALINTERACTABLESIDECHARACTER)
+        {
+            forgetInteractableSideCharacter();
         }
         else if (gObject.tag == FINALCAR)
         {
@@ -232,7 +243,7 @@ public class L1Player : MonoBehaviour
             }
             else if(interactionObject.tag==FINALSIDECHARACTER)
             {
-                if (!interactionObject.transform.parent.GetComponent<L1Character>().IsMissionOver)
+                if (!interactionObject.GetComponent<L1SideCharacter>().getMainMissionCharacter().GetComponent<L1Character>().IsMissionOver)
                 {
                     if (e.Choose.x == 0 && e.Choose.y == 1 && e.Choose.z == 0)
                     {
@@ -294,6 +305,70 @@ public class L1Player : MonoBehaviour
                         speechText.text = text;
                     }
                 }
+            }else if(interactionObject.tag == FINALINTERACTABLESIDECHARACTER)
+            {
+                if(!interactionObject.GetComponent<L1InteractableSideCharacters>().IsRightChoice)
+                {
+                    if (e.Choose.x == 0 && e.Choose.y == 1 && e.Choose.z == 0)
+                    {
+                        Debug.Log("1");
+                        string question = characterSO.getConversations()[0];
+                        string answer = characterSO.getConversationAnswers()[0];
+                        string text = "You: " + question + "\nHim: " + answer;
+                        speechText.text = text;
+                    }
+                    else if (e.Choose.x == 0 && e.Choose.y == -1 && e.Choose.z == 0)
+                    {
+                        string question = characterSO.getConversations()[1];
+                        string answer = characterSO.getConversationAnswers()[1];
+                        string text = "You: " + question + "\nHim: " + answer;
+                        speechText.text = text;
+                        Debug.Log("2");
+                    }
+                    else if (e.Choose.x == -1 && e.Choose.y == 0 && e.Choose.z == 0)
+                    {
+                        string question = characterSO.getConversations()[2];
+                        string answer = characterSO.getConversationAnswers()[2];
+                        string text = "You: " + question + "\nHim: " + answer;
+                        speechText.text = text;
+                        Debug.Log("3");
+                    }
+                    else if (e.Choose.x == 1 && e.Choose.y == 0 && e.Choose.z == 0)
+                    {
+                        Debug.Log("4");
+                        string question = characterSO.getConversations()[3];
+                        string answer = characterSO.getConversations()[3];
+                        string text = "You: " + question + "\nHim: " + answer;
+                        speechText.text = text;
+                    }
+                    else if (e.Choose.x == 0 && e.Choose.y == 0 && e.Choose.z == 1)
+                    {
+                        string question = characterSO.getConversations()[4];
+                        string answer = characterSO.getConversations()[4];
+                        string text = "You: " + question + "\nHim: " + answer;
+                        speechText.text = text;
+                        Debug.Log("5");
+                    }
+                    else if (e.Choose.x == 0 && e.Choose.y == 0 && e.Choose.z == -1)
+                    {
+                        string question = characterSO.getConversations()[5];
+                        string answer = characterSO.getConversations()[5];
+                        string text = "You: " + question + "\nHim: " + answer;
+                        speechText.text = text;
+                        Debug.Log("6");
+                    }
+                }
+                else
+                {
+                    if (e.Choose.x == 0 && e.Choose.y == 1 && e.Choose.z == 0)
+                    {
+                        Debug.Log("1");
+                        string solutionAnswer = characterSO.getSolutionAnswers()[0];
+                        string apriciate = characterSO.getApriciates()[0];
+                        string text = "You: " + solutionAnswer + "\nHim: " + apriciate;
+                        speechText.text = text;
+                    }
+                }
             }
 
             
@@ -324,17 +399,21 @@ public class L1Player : MonoBehaviour
         {
             handleTalk();
         }
+        else if(interactionObject.tag==FINALINTERACTABLESIDECHARACTER)
+        {
+            handleTalk();
+        }
         else if(interactionObject.tag==FINALCAR)
         {
-            driveCar();
+            interactionObject.GetComponent<L1Car>().enterCar();
         }
         else if(interactionObject.tag == FINALHELICOPTER)
         {
-            driveHelicopter();
+            interactionObject.GetComponent<L1Helicopter>().enterHelicopter();
         }
         else if(interactionObject.tag == FINALAIRCRAFT)
         {
-            drivePlane();
+            interactionObject.GetComponent<L1Plane>().enterPlane();
         }
     }
 
@@ -381,9 +460,9 @@ public class L1Player : MonoBehaviour
                     canChoose = true;
                 }
             }
-            else
+            else if(interactionObject.tag==FINALSIDECHARACTER)
             {
-                if (!interactionObject.transform.parent.GetComponent<L1Character>().IsMissionOver)
+                if (!interactionObject.GetComponent<L1SideCharacter>().getMainMissionCharacter().GetComponent<L1Character>().IsMissionOver)
                 {
                     canvas.gameObject.SetActive(true);
                     string name = characterSO.getName();
@@ -419,6 +498,36 @@ public class L1Player : MonoBehaviour
                     canChoose = true;
                 }
             }
+            else if(interactionObject.tag==FINALINTERACTABLESIDECHARACTER)
+            {
+                if(!interactionObject.GetComponent<L1InteractableSideCharacters>().IsRightChoice)
+                {
+                    canvas.gameObject.SetActive(true);
+                    string name = characterSO.getName();
+                    List<string> conversations = characterSO.getConversations();
+                    speechText.text = "Hello! My name is ";
+                    speechText.text += name + "\n";
+
+                    speechText.text += "Conversations\n";
+                    int i = 0;
+                    for (i = 0; i < conversations.Count; i++)
+                    {
+                        speechText.text += (i + 1) + ":" + conversations[i] + "\n";
+                    }
+                    canChoose = true;
+                }
+                else
+                {
+                    canvas.gameObject.SetActive(true);
+                    List<String> solutionAnswers = characterSO.getSolutionAnswers();
+                    speechText.text = "";
+                    for (int i = 0; i < solutionAnswers.Count; i++)
+                    {
+                        speechText.text += (i + 1) + ":" + solutionAnswers[i] + "\n";
+                    }
+                    canChoose = true;
+                }
+            }
                 
         }
         
@@ -437,6 +546,13 @@ public class L1Player : MonoBehaviour
         interactionObject = gObject;
         canInteract = true;
         this.characterSO = gObject.GetComponent<L1SideCharacter>().getCharacterSO();
+    }
+
+    private void recognizeInteractableSideCharacter(GameObject gObject)
+    {
+        interactionObject = gObject;
+        canInteract = true;
+        this.characterSO = gObject.GetComponent<L1InteractableSideCharacters>().getCharacterSO();
     }
     private void forgetCharacter()
     {
@@ -457,6 +573,15 @@ public class L1Player : MonoBehaviour
         canvas.gameObject.SetActive(false);
     }
 
+    private void forgetInteractableSideCharacter()
+    {
+        canChoose = false;
+        canInteract = false;
+        interactionObject = null;
+        Transform canvas = transform.GetChild(3);
+        canvas.gameObject.SetActive(false);
+    }
+
     private void recognizeCar(GameObject gObject)
     {
         interactionObject = gObject;
@@ -467,18 +592,6 @@ public class L1Player : MonoBehaviour
     {
         interactionObject = gObject;
         canInteract = true;
-    }
-
-    private void driveCar()
-    {
-        transform.SetParent(interactionObject.transform);
-        Transform playerPosition=interactionObject.transform.GetChild(2);
-        transform.localPosition = playerPosition.localPosition;
-        transform.localRotation = Quaternion.identity;
-        enabled = false;
-        gameInput.getInputActs().Player.Disable();
-        gameInput.getInputActs().Car.Enable();
-        interactionObject.GetComponent<L1Car>().enabled = true;
     }
 
     private void driveHelicopter()
@@ -574,4 +687,6 @@ public class L1Player : MonoBehaviour
     {
         return missions;
     }
+
+    
 }

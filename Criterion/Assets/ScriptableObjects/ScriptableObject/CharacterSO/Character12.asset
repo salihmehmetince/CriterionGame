@@ -18,19 +18,19 @@ MonoBehaviour:
   - What do you produce?
   - Wow your car is very beautiful.
   characterHelps:
-  - That is  me.
-  - It depends on what oyu want.
-  - It is very special.
-  characterConversationAnswers:
   - Why don't you work?
   - Can i help you?
   - Dont you have a mechanic in your factory?
+  characterConversationAnswers:
+  - That is  me.
+  - It depends on what oyu want.
+  - It is very special.
   characterHelpAnswers:
   - The factory is broken
   - Are you amechanic?
   - I think i broke it too.
   missionNumber: 8
   solutionAnswers:
-  - 
+  - Now, It s time to work.
   apriciates:
-  - 
+  - And now you can drive my car when you want.

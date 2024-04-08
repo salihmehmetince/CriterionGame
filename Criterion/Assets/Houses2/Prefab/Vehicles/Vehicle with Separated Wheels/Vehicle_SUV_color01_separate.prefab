@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 5218751759042849828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_RR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 3300002}
   - component: {fileID: 2300002}
   - component: {fileID: 1606379267258188070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_RL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 3300004}
   - component: {fileID: 2300004}
   - component: {fileID: 8971588368805475073}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 3300006}
   - component: {fileID: 2300006}
   - component: {fileID: 8875921454597427851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 3300008}
   - component: {fileID: 2300008}
   - component: {fileID: 2031861724770126080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Car Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,9 +544,9 @@ GameObject:
   - component: {fileID: 5854171073198412733}
   - component: {fileID: 6583273119030480808}
   - component: {fileID: 4671024837963909757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vehicle_SUV_color01_separate
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

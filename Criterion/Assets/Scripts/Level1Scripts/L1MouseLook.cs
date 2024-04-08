@@ -41,18 +41,25 @@ public class L1MouseLook : MonoBehaviour
             if(parentTransform.tag==FINALCAR)
             {
                 carMouseLook();
+                Debug.Log("car");
+
             }
             else if(parentTransform.tag == FINALHELICOPTER)
             {
                 helicopterMouseLook();
+                Debug.Log("helicopter");
+
             }
             else if (parentTransform.tag == FINALAIRCRAFT)
             {
                 planeMouseLook();
+                Debug.Log("plane");
+
             }
         }
         else
         {
+            Debug.Log("player");
             playerMouseLook();
         }
     }
@@ -77,7 +84,7 @@ public class L1MouseLook : MonoBehaviour
 
         rotationX -= mouseY;
         rotationY += mouseX;
-        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+        rotationX = Mathf.Clamp(rotationX, 0f, 180f);
         rotationY = Mathf.Clamp(rotationY, -90f, 90f);
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
 
@@ -90,7 +97,7 @@ public class L1MouseLook : MonoBehaviour
 
         rotationX -= mouseY;
         rotationY += mouseX;
-        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+        rotationX = Mathf.Clamp(rotationX, 0f, 180f);
         rotationY = Mathf.Clamp(rotationY, -90f, 90f);
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
 
@@ -103,7 +110,7 @@ public class L1MouseLook : MonoBehaviour
 
         rotationX -= mouseY;
         rotationY += mouseX;
-        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+        rotationX = Mathf.Clamp(rotationX, 0f, 180f);
         rotationY = Mathf.Clamp(rotationY, -90f, 90f);
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
 

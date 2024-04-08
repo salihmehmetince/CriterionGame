@@ -6,6 +6,10 @@ public class L1SolutionPlace9 : MonoBehaviour
 {
     private const string FINALFACTORYMECHANIC = "FactoryMechanic";
 
+    private const string FINALISWALKING = "IsWalking";
+
+    [SerializeField]
+    private Transform specialCar;
     private void OnTriggerEnter(Collider other)
     {
         Transform gObject = other.gameObject.transform;
@@ -16,16 +20,17 @@ public class L1SolutionPlace9 : MonoBehaviour
             {
                 Debug.Log("Görev tamamlandý");
                 gObject.SetParent(transform);
-                gObject.localPosition = new Vector3(0.8f, 1f, -2f);
+                gObject.localPosition = new Vector3(2f, 1f, -2f);
                 gObject.localRotation = Quaternion.identity;
                 Transform player = gObject.GetChild(gObject.childCount - 1);
                 Debug.Log(player.name);
-                gObject.GetComponent<L1Car>().liveCar();
-                gObject.GetComponent<L1Car>().enabled = false;
-                GameObject character = player.GetComponent<L1Player>().getmissions()[0].MissionCharacter;
-                Transform problemBox = character.transform.GetChild(3);
+                Transform character = gObject.GetComponent<L1MechanicCharacter>().getMainCharacter();
+                gObject.GetComponent<L1MechanicCharacter>().getAnimator().SetBool(FINALISWALKING,false);
+                gObject.GetComponent<L1MechanicCharacter>().enabled = false;
+                Transform problemBox = character.GetChild(3);
                 problemBox.gameObject.SetActive(false);
                 character.GetComponent<L1Character>().IsMissionOver = true;
+                specialCar.GetComponent<L1SpecialCar>().CanDriveSpecialCar = true;
                 enabled = false;
             }
             else

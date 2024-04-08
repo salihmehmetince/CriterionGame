@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -13,7 +14,7 @@ public class L1Plane : MonoBehaviour
 
     private CharacterController characterController;
 
-    private AudioSource helicopterSoundEffect;
+    private AudioSource planeSoundEffect;
 
     private float speed = 0;
 
@@ -37,6 +38,9 @@ public class L1Plane : MonoBehaviour
 
     [SerializeField]
     private LayerMask ground;
+    private Transform body;
+
+    private float sideSpeed=0f;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +48,16 @@ public class L1Plane : MonoBehaviour
         Transform steeringWheel = transform.GetChild(0);
         steeringWheel.gameObject.SetActive(false);
         characterController = GetComponent<CharacterController>();
-        helicopterSoundEffect = GetComponent<AudioSource>();
-        propeller = transform.GetChild(1);
+        planeSoundEffect = GetComponent<AudioSource>();
+        body = transform.GetChild(1);
+        propeller = body.GetChild(0);
+        gameInput.onPlaneInteract += onPlaneInteracted;
+        
+    }
+
+    private void onPlaneInteracted(object sender, EventArgs e)
+    {
+        livePlane();
     }
 
     void Update()
@@ -130,12 +142,36 @@ public class L1Plane : MonoBehaviour
         if (frontDirection > 0)
         {
             transform.Rotate(0f, turnTo*Time.deltaTime, 0f);
+            if (sideDirection > 0.5f)
+            {
+                body.localRotation = Quaternion.Euler(45f, 0f, 0f);
+            }
+            else if (sideDirection == 0f)
+            {
+                body.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+            else if (sideDirection < -0.5f)
+            {
+                body.localRotation = Quaternion.Euler(-45f, 0f, 0f);
+            }
         }
         else if (frontDirection == 0)
         {
             if (speed > 0)
             {
                 transform.Rotate(0f, turnTo*Time.deltaTime, 0f);
+                if (sideDirection > 0.5f)
+                {
+                    body.localRotation = Quaternion.Euler(45f, 0f, 0f);
+                }
+                else if (sideDirection == 0f)
+                {
+                    body.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                }
+                else if (sideDirection < -0.5f)
+                {
+                    body.localRotation = Quaternion.Euler(-45f, 0f, 0f);
+                }
             }
             else
             {
@@ -143,9 +179,22 @@ public class L1Plane : MonoBehaviour
                 {
                     //transform.localRotation = Quaternion.Slerp(transform.localRotation,Quaternion.Euler(0f,0f,45f),0.1f);
                     //characterController.Move(-transform.right *100f * Time.deltaTime);
+                    if (sideDirection > 0.5f)
+                    {
+                        body.localRotation = Quaternion.Euler(45f, 0f, 0f);
+                    }
+                    else if (sideDirection == 0f)
+                    {
+                        body.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                    }
+                    else if (sideDirection < -0.5f)
+                    {
+                        body.localRotation = Quaternion.Euler(-45f, 0f, 0f);
+                    }
                 }
                 else
                 {
+                    
                 }
             }
 
@@ -171,8 +220,42 @@ public class L1Plane : MonoBehaviour
             gravity = 9.81f*gravityScale;
         }
 
-        Vector3 move = -transform.right * speed + transform.forward * speed * Mathf.Sin((Mathf.PI / 180) * turnTo)+-transform.up*gravity;
+        if(!isGrounded)
+        {
+            sideSpeed = 100f;
+        }
+        else
+        {
+            sideSpeed = 0f;
+        }
+        Vector3 move = -transform.right * speed + transform.forward*sideSpeed * Mathf.Sin((Mathf.PI / 180) * turnTo)+-transform.up*gravity;
         characterController.Move(move * Time.deltaTime);
+    }
+
+    private void livePlane()
+    {
+        Transform player = null;
+        player = GameObject.Find("Player").transform;
+        gameInput.getInputActs().Plane.Disable();
+        player.position = new Vector3(player.position.x + 20f, player.position.y, player.position.z);
+        player.GetComponent<L1Player>().enabled = true;
+        player.GetComponent<L1Player>().enablePlayerInputActions();
+        player.parent = null;
+        enabled = false;
+    }
+
+    public void enterPlane()
+    {
+        enabled = true;
+        Transform player = null;
+        player = GameObject.Find("Player").transform;
+        player.SetParent(transform);
+        Transform playerPosition = transform.GetChild(2);
+        player.localPosition = playerPosition.localPosition;
+        player.localRotation = Quaternion.identity;
+        player.GetComponent<L1Player>().enabled = false;
+        gameInput.getInputActs().Player.Disable();
+        gameInput.getInputActs().Plane.Enable();
     }
 
 }

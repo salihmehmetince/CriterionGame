@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
-  m_Name: Character6
+  m_Name: Character14
   m_EditorClassIdentifier: 
-  characterName: Character6
+  characterName: Character14
   characterConversations:
-  - Let me guess...
-  - Are you familiar.
-  - Nice house.
+  - Sweet fruits?
+  - What are you doing?
+  - What kind of fruits?
   characterHelps:
-  - Are you okay?
-  - Anything else?
-  - Where can i find oil?
+  - Is there a problem in the garden?
+  - "Can \u0130 help?"
+  - Where is the water?
   characterConversationAnswers:
-  - No, I don't.
-  - Yes, oil.
-  - Thanks. I have just painted.
+  - Best in the town.
+  - Prepearing the fruits.
+  - Ordinary but the best.
   characterHelpAnswers:
-  - I need oil.
-  - No, just it
-  - I know where it is but i need a vehicle. I am tired.
-  missionNumber: 3
+  - Big one. That group made something to my water.
+  - Do you know how to use a helicopter?
+  - Nearthe factory.
+  missionNumber: 10
   solutionAnswers:
-  - Spent cleverly.
+  - Best water for the best fruits.
   apriciates:
-  - Thanks again.
+  - Remember to save for you some fruits.
