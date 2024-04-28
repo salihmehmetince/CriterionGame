@@ -10,7 +10,7 @@ public class L1Car : MonoBehaviour
     [SerializeField]
     private GameInput gameInput;
 
-    private const string FINALPLAYER = "Player";
+    protected const string FINALPLAYER = "Player";
 
     private CharacterController characterController;
 
@@ -62,7 +62,7 @@ public class L1Car : MonoBehaviour
         carSoundEffect.Play();
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         GameObject gObject = other.gameObject;
 
@@ -81,7 +81,7 @@ public class L1Car : MonoBehaviour
             forgetPlayer();
         }
     }
-    private void recognizePlayer()
+    protected void recognizePlayer()
     {
         Transform steeringWheelBox = transform.GetChild(0);
         steeringWheelBox.gameObject.SetActive(true);

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character17
+  m_EditorClassIdentifier: 
+  characterName: Character17
+  characterConversations:
+  - What is for this truck?
+  - Are you working alone?
+  - Why the truck is waiting here?
+  characterHelps:
+  - Do you need help?
+  - Where do you fill the truck?
+  - Why don't you go yourself?
+  characterConversationAnswers:
+  - For the gas station.
+  - Yes, i am. I think i need workers.
+  - It is empty.
+  characterHelpAnswers:
+  - Please.
+  - At the big station.
+  - That group can make something to my buildings?
+  missionNumber: 13
+  solutionAnswers:
+  - I filled it.
+  apriciates:
+  - Thanks again.

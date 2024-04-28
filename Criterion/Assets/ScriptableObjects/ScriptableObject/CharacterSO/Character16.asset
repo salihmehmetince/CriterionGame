@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character16
+  m_EditorClassIdentifier: 
+  characterName: Character16
+  characterConversations:
+  - What are you looking for?
+  - What keys?
+  - How many buildings do you have?
+  characterHelps:
+  - Let me understand. Did you lost the key of all your building?
+  - Do you have imporant works?
+  - Where it could be?
+  characterConversationAnswers:
+  - My keys.
+  - The keys of my buildins.
+  - 3
+  characterHelpAnswers:
+  - Unfortunately.
+  - Yes, I have. I must deliver these products.
+  - I don't know. Maybe anywhere.
+  missionNumber: 12
+  solutionAnswers:
+  - Did i found the right key?
+  apriciates:
+  - Yes you did. Thanks

@@ -6,6 +6,8 @@ public class L1SolutionPlace2 : MonoBehaviour
 {
     private const string FINALWOODSTRUCK = "WoodsTruck";
 
+    [SerializeField]
+    private GameObject character;
     private void OnTriggerEnter(Collider other)
     {
         Transform gObject = other.gameObject.transform;
@@ -22,11 +24,9 @@ public class L1SolutionPlace2 : MonoBehaviour
                 Debug.Log(player.name);
                 gObject.GetComponent<L1Car>().liveCar();
                 gObject.GetComponent<L1Car>().enabled = false;
-                GameObject character = player.GetComponent<L1Player>().getmissions()[0].MissionCharacter;
                 Transform problemBox = character.transform.GetChild(3);
                 problemBox.gameObject.SetActive(false);
                 character.GetComponent<L1Character>().IsMissionOver = true;
-                player.GetComponent<L1Player>().getmissions().RemoveAt(0);
                 enabled = false;
             }
             else

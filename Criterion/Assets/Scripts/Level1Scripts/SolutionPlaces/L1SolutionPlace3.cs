@@ -12,6 +12,9 @@ public class L1SolutionPlace3 : MonoBehaviour
     private bool hasPieces = false;
 
     private Transform pieces;
+
+    [SerializeField]
+    private Transform character;
     private void OnTriggerEnter(Collider other)
     {
         GameObject gObject = other.gameObject;
@@ -33,12 +36,11 @@ public class L1SolutionPlace3 : MonoBehaviour
                     if(pieces.transform.childCount>=3)
                     {
                     
-                        pieces.SetParent(gObject.GetComponent<L1Player>().getmissions()[0].MissionCharacter.transform);
-                        Transform character = gObject.GetComponent<L1Player>().getmissions()[0].MissionCharacter.transform;
+                        pieces.SetParent(transform);
+                        pieces.localPosition = Vector3.zero;
                         Transform problemBox = character.transform.GetChild(3);
                         problemBox.gameObject.SetActive(false);
                         character.GetComponent<L1Character>().IsMissionOver = true;
-                        gObject.GetComponent<L1Player>().getmissions().RemoveAt(0);
                         enabled = false;
                         Debug.Log("success");
                     }

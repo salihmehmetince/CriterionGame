@@ -11,6 +11,9 @@ public class L1SolutionPlace4 : MonoBehaviour
     private Transform jerryCan;
 
     private bool hasPieces;
+
+    [SerializeField]
+    private Transform character;
     private void OnTriggerEnter(Collider other)
     {
         GameObject gObject = other.gameObject;
@@ -30,15 +33,13 @@ public class L1SolutionPlace4 : MonoBehaviour
             {
                 jerryCan.SetParent(transform);
                 jerryCan.transform.localPosition = new Vector3(0f,1f,0f);
-                Transform player = gObject.transform.GetChild(5);
+                Transform player = GameObject.Find("Player").transform;
                 gObject.GetComponent<L1Car>().liveCar();
                 gObject.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
                 gObject.transform.localPosition = new Vector3(720f,0f,20f);
-                GameObject character = player.GetComponent<L1Player>().getmissions()[0].MissionCharacter;
                 Transform problemBox = character.transform.GetChild(3);
                 problemBox.gameObject.SetActive(false);
                 character.GetComponent<L1Character>().IsMissionOver = true;
-                player.GetComponent<L1Player>().getmissions().RemoveAt(0);
                 enabled = false;
             }
         }

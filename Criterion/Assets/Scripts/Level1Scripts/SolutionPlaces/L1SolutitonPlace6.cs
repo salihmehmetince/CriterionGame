@@ -8,6 +8,8 @@ public class L1SolutitonPlace6 : MonoBehaviour
 
     private const string FINALTOOLBOX = "Toolbox";
 
+    [SerializeField]
+    private Transform character;
     private void OnTriggerEnter(Collider other)
     {
         GameObject gObject = other.gameObject;
@@ -21,12 +23,9 @@ public class L1SolutitonPlace6 : MonoBehaviour
                     toolbox.GetComponent<L1Toolbox>().enabled = false;
                     toolbox.SetParent(transform);
                     toolbox.localPosition = new Vector3(0f, 1f, 0f);
-                    //gObject.transform.GetChild(4).SetParent(transform);
-                    GameObject character = gObject.GetComponent<L1Player>().getmissions()[0].MissionCharacter;
                     Transform problemBox = character.transform.GetChild(3);
                     problemBox.gameObject.SetActive(false);
                     character.GetComponent<L1Character>().IsMissionOver = true;
-                    gObject.GetComponent<L1Player>().getmissions().RemoveAt(0);
                     enabled = false;
                     return;
                 }

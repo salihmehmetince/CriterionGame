@@ -24,6 +24,13 @@ TagManager:
   - Waters
   - WatersFloor
   - Foods
+  - Key
+  - GasStationPoint
+  - GasTruck
+  - LostPiece
+  - LostCar
+  - BrokenTruck
+  - SendHelicopter
   layers:
   - Default
   - TransparentFX

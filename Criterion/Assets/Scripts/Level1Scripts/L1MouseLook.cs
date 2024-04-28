@@ -41,25 +41,21 @@ public class L1MouseLook : MonoBehaviour
             if(parentTransform.tag==FINALCAR)
             {
                 carMouseLook();
-                Debug.Log("car");
 
             }
             else if(parentTransform.tag == FINALHELICOPTER)
             {
                 helicopterMouseLook();
-                Debug.Log("helicopter");
 
             }
             else if (parentTransform.tag == FINALAIRCRAFT)
             {
                 planeMouseLook();
-                Debug.Log("plane");
 
             }
         }
         else
         {
-            Debug.Log("player");
             playerMouseLook();
         }
     }

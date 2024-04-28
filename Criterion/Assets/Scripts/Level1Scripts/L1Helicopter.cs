@@ -163,7 +163,7 @@ public class L1Helicopter : MonoBehaviour
         characterController.Move(move * Time.deltaTime);
     }
 
-    private void liveHelicopter()
+    public void liveHelicopter()
     {
         Transform player = null;
         player = GameObject.Find("Player").transform;

@@ -32,7 +32,7 @@ public class L1Character : MonoBehaviour
         gameInput.onChoose += onChoosed;
     }
 
-    private void onChoosed(object sender, GameInput.onChooseEventArgs e)
+    protected virtual void onChoosed(object sender, GameInput.onChooseEventArgs e)
     {
         if (e.Choose.x == 0 && e.Choose.y == 1 && e.Choose.z == 0)
         {
@@ -99,7 +99,7 @@ public class L1Character : MonoBehaviour
         return characterSO;
     }
 
-    private void startMission()
+    protected void startMission()
     {
         exclamationbox.gameObject.SetActive(true);
         Debug.Log(exclamationbox.parent);
@@ -116,6 +116,11 @@ public class L1Character : MonoBehaviour
     {
         get { return isMissionStart; }
         set { isMissionStart = value; }
+    }
+
+    public Animator getAnimator()
+    {
+        return animator;
     }
 
 }
