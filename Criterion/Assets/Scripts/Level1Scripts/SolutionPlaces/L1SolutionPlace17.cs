@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class L1SolutionPlace17 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private const string FINALTABLEORDERTRUCK = "TableOrderTruck";
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private GameObject character;
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Transform gObject = other.gameObject.transform;
+        Transform parenGObject = gObject.parent;
+        if (parenGObject != null)
+        {
+            if (parenGObject.tag == FINALTABLEORDERTRUCK)
+            {
+                Debug.Log("Görev tamamlandý");
+                gObject.SetParent(transform);
+                gObject.localPosition = new Vector3(0.8f, 1f, -2f);
+                gObject.localRotation = Quaternion.identity;
+                Transform player = GameObject.Find("Player").transform;
+                Debug.Log(player.name);
+                gObject.GetComponent<L1Car>().liveCar();
+                gObject.GetComponent<L1Car>().enabled = false;
+                Transform problemBox = character.transform.GetChild(3);
+                problemBox.gameObject.SetActive(false);
+                character.GetComponent<L1Character>().IsMissionOver = true;
+                enabled = false;
+            }
+            else
+            {
+            }
+        }
     }
 }

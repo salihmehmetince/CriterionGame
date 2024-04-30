@@ -42,6 +42,8 @@ public class L1Plane : MonoBehaviour
 
     private float sideSpeed=0f;
 
+    [SerializeField]
+    private bool canDrive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -109,8 +111,6 @@ public class L1Plane : MonoBehaviour
         float frontDirection = gameInput.getPlaneMovementVectorNormalized().y;
 
         float sideDirection = gameInput.getHelicopterMovementVectorNormalized().x;
-
-        float altitudeDirection = gameInput.getHelicopterAltitude();
 
         isGrounded = Physics.CheckSphere(transform.position,10f,ground);
 
@@ -230,6 +230,7 @@ public class L1Plane : MonoBehaviour
         }
         Vector3 move = -transform.right * speed + transform.forward*sideSpeed * Mathf.Sin((Mathf.PI / 180) * turnTo)+-transform.up*gravity;
         characterController.Move(move * Time.deltaTime);
+        Debug.Log("Move:"+move);
     }
 
     private void livePlane()
@@ -258,4 +259,16 @@ public class L1Plane : MonoBehaviour
         gameInput.getInputActs().Plane.Enable();
     }
 
+    public bool CanDrive
+    {
+        get
+        {
+            return canDrive;
+        }
+
+        set
+        {
+            canDrive = value;
+        }
+    }
 }

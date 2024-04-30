@@ -32,6 +32,9 @@ public class L1Helicopter : MonoBehaviour
     private float altitude = 0f;
 
     private float minFlytAltitude = 100f;
+
+    [SerializeField]
+    private bool canDrive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -187,5 +190,18 @@ public class L1Helicopter : MonoBehaviour
         player.GetComponent<L1Player>().enabled = false;
         gameInput.getInputActs().Player.Disable();
         gameInput.getInputActs().Helicopter.Enable();
+    }
+
+    public bool CanDrive
+    {
+        get
+        {
+            return canDrive;
+        }
+
+        set
+        {
+            canDrive = value;
+        }
     }
 }

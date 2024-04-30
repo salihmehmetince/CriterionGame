@@ -90,12 +90,20 @@ public class L1InteractableSideCharacters : MonoBehaviour
     {
         Transform speechBox = transform.GetChild(2);
         speechBox.gameObject.SetActive(true);
+        if(!isRightChoice)
+        {
+            enabled = true;
+        }
     }
 
     private void forgetPlayer()
     {
         Transform speechBox = transform.GetChild(2);
         speechBox.gameObject.SetActive(false);
+        if (!isRightChoice)
+        {
+            enabled = false;
+        }
     }
 
     public bool IsRightChoice
@@ -155,4 +163,6 @@ public class L1InteractableSideCharacters : MonoBehaviour
     {
         return mainCharacter;
     }
+
+
 }

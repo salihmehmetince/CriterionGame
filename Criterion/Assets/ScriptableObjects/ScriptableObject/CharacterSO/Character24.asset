@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character24
+  m_EditorClassIdentifier: 
+  characterName: Character24
+  characterConversations:
+  - Very beautiful station.
+  - What does that antenna do?
+  - Do you love plains too?
+  characterHelps:
+  - What is for that helicopter?
+  - Where is your customer?
+  - Is customer home?
+  characterConversationAnswers:
+  - Don't embrace me.
+  - They are collecting data from space.
+  - That is my obsession.
+  characterHelpAnswers:
+  - It is my customer's order. Can you take it him?
+  - If you go straight, you will find it.
+  - Yes, he is, He is waiting for one hour for it.
+  missionNumber: 18
+  solutionAnswers:
+  - I delivered it.
+  apriciates:
+  - If you need to fly, let me know about it.

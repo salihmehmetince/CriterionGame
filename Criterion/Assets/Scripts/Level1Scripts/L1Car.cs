@@ -31,6 +31,8 @@ public class L1Car : MonoBehaviour
 
     private float maxBackSpeed = -50f;
 
+    [SerializeField]
+    private bool canDrive=false;
 
     private void Start()
     {
@@ -93,7 +95,7 @@ public class L1Car : MonoBehaviour
         steeringWheelBox.gameObject.SetActive(false);
     }
 
-    private void drive()
+    protected virtual void drive()
     {
         float z = gameInput.getCarMovementVectorNormalized().y;
 
@@ -186,11 +188,24 @@ public class L1Car : MonoBehaviour
         Transform player = null;
         player = GameObject.Find("Player").transform;
         player.SetParent(transform);
-        Transform playerPosition= transform.GetChild(2);
+        Transform playerPosition = transform.GetChild(2);
         player.localPosition = playerPosition.localPosition;
         player.localRotation = Quaternion.identity;
         player.GetComponent<L1Player>().enabled = false;
         gameInput.getInputActs().Player.Disable();
         gameInput.getInputActs().Car.Enable();
+    }
+
+    public bool CanDrive
+    {
+        get
+        {
+            return canDrive;
+        }
+
+        set
+        {
+            canDrive = value;
+        }
     }
 }

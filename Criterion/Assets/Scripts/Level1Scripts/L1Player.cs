@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
@@ -72,6 +73,18 @@ public class L1Player : MonoBehaviour
 
     private const string FINALINTERACTABLESIDECHARACTER = "InteractableSideCharacter";
 
+    private const string FINALITEM = "Item";
+
+    private bool canTake = false;
+
+    private Transform item = null;
+
+    private const string FINALWORKOBJECT = "WorkObject";
+
+    private Transform workObject;
+
+    private bool canWork = false;
+
     public struct Mission
     {
         private int missionregion;
@@ -116,6 +129,14 @@ public class L1Player : MonoBehaviour
         {
             recognizePlane(gObject);
         }
+        else if(gObject.tag==FINALITEM)
+        {
+            recognizeItem(gObject.transform);
+        }
+        else if (gObject.tag == FINALWORKOBJECT)
+        {
+            recognizeWorkObject(gObject.transform);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -145,6 +166,14 @@ public class L1Player : MonoBehaviour
         {
             forgetPlane();
         }
+        else if (gObject.tag == FINALITEM)
+        {
+            forgetItem();
+        }
+        else if(gObject.tag == FINALWORKOBJECT)
+        {
+            forgetWorkObject();
+        }
     }
 
     private void Start()
@@ -156,6 +185,19 @@ public class L1Player : MonoBehaviour
         gameInput.onInteract += onInteracted;
         gameInput.onJump += onJumped;
         gameInput.onChoose += onChoosed;
+        gameInput.onWork += onWorked;
+    }
+
+    private void onWorked(object sender, EventArgs e)
+    {
+        if (workObject != null)
+        {
+            if (canWork)
+            {
+                L1WorkObject workObjectC=workObject.GetComponent<L1WorkObject>();
+                workObjectC.work();
+            }
+        }
     }
 
     private void onChoosed(object sender, onChooseEventArgs e)
@@ -391,30 +433,56 @@ public class L1Player : MonoBehaviour
 
     private void onInteracted(object sender, EventArgs e)
     {
-        if(interactionObject.tag==FINALCHARACTER)
-        {
-            handleTalk();
-        }
-        else if(interactionObject.tag==FINALSIDECHARACTER)
-        {
-            handleTalk();
-        }
-        else if(interactionObject.tag==FINALINTERACTABLESIDECHARACTER)
-        {
-            handleTalk();
-        }
-        else if(interactionObject.tag==FINALCAR)
-        {
-            interactionObject.GetComponent<L1Car>().enterCar();
-        }
-        else if(interactionObject.tag == FINALHELICOPTER)
-        {
-            interactionObject.GetComponent<L1Helicopter>().enterHelicopter();
-        }
-        else if(interactionObject.tag == FINALAIRCRAFT)
-        {
-            interactionObject.GetComponent<L1Plane>().enterPlane();
-        }
+            if(interactionObject!=null)
+            {
+                if (interactionObject.tag == FINALCHARACTER)
+                {
+                    handleTalk();
+                }
+                else if (interactionObject.tag == FINALSIDECHARACTER)
+                {
+                    handleTalk();
+                }
+                else if (interactionObject.tag == FINALINTERACTABLESIDECHARACTER)
+                {
+                    handleTalk();
+                }
+                else if (interactionObject.tag == FINALCAR)
+                {
+                    if(interactionObject.GetComponent<L1Car>().CanDrive)
+                    {
+                        interactionObject.GetComponent<L1Car>().enterCar();
+
+                    }
+                }
+                else if (interactionObject.tag == FINALHELICOPTER)
+                {
+                    if (interactionObject.GetComponent<L1Helicopter>().CanDrive)
+                    {
+                        interactionObject.GetComponent<L1Helicopter>().enterHelicopter();
+                    }
+                }
+                else if (interactionObject.tag == FINALAIRCRAFT)
+                {
+                    if (interactionObject.GetComponent<L1Plane>().CanDrive)
+                    {
+                        interactionObject.GetComponent<L1Plane>().enterPlane();
+                    }
+                }
+            }
+        
+            if(item!=null)
+            {
+                if (canTake)
+                {
+                    takeItem();
+                }
+                else
+                {
+                    leaveItem();
+                }
+            }
+        
     }
 
     private void handleTalk()
@@ -541,6 +609,17 @@ public class L1Player : MonoBehaviour
         this.characterSO = gObject.GetComponent<L1Character>().getCharacterSO();
     }
 
+    private void recognizeWorkObject(Transform gObject)
+    {
+        workObject = gObject;
+        canWork = true;
+    }
+
+    private void recognizeItem(Transform item)
+    {
+        this.item = item;
+        canTake = true;
+    }
     private void recognizeSideCharacter(GameObject gObject)
     {
         interactionObject = gObject;
@@ -562,6 +641,18 @@ public class L1Player : MonoBehaviour
         interactionObject = null;
         Transform canvas = transform.GetChild(3);
         canvas.gameObject.SetActive(false);
+    }
+
+    private void forgetItem()
+    {
+        item = null;    
+        canTake = false;
+    }
+
+    private void forgetWorkObject()
+    {
+        workObject = null;
+        canWork=false;
     }
 
     private void forgetSideCharacter()
@@ -594,29 +685,6 @@ public class L1Player : MonoBehaviour
         canInteract = true;
     }
 
-    private void driveHelicopter()
-    {
-        transform.SetParent(interactionObject.transform);
-        Transform playerPosition = interactionObject.transform.GetChild(2);
-        transform.localPosition = playerPosition.localPosition;
-        transform.localRotation = Quaternion.identity;
-        enabled = false;
-        gameInput.getInputActs().Player.Disable();
-        gameInput.getInputActs().Helicopter.Enable();
-        interactionObject.GetComponent<L1Helicopter>().enabled = true;
-    }
-
-    private void drivePlane()
-    {
-        transform.SetParent(interactionObject.transform);
-        Transform playerPosition = interactionObject.transform.GetChild(2);
-        transform.localPosition = playerPosition.localPosition;
-        transform.localRotation = Quaternion.identity;
-        enabled = false;
-        gameInput.getInputActs().Player.Disable();
-        gameInput.getInputActs().Plane.Enable();
-        interactionObject.GetComponent<L1Plane>().enabled = true;
-    }
 
     private void move()
     {
@@ -688,5 +756,16 @@ public class L1Player : MonoBehaviour
         return missions;
     }
 
-    
+    private void takeItem()
+    {
+        item.transform.SetParent(transform);
+        canTake = false;
+    }
+
+    private void leaveItem()
+    {
+        item.transform.SetParent(null);
+        canTake = true;
+    }
+
 }

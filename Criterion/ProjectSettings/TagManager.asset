@@ -31,6 +31,12 @@ TagManager:
   - LostCar
   - BrokenTruck
   - SendHelicopter
+  - TableOrderTruck
+  - FoodDeliveryTruck
+  - Item
+  - WorkObject
+  - FruitTruck
+  - Fruit
   layers:
   - Default
   - TransparentFX

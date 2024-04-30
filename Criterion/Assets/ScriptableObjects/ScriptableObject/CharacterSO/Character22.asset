@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character22
+  m_EditorClassIdentifier: 
+  characterName: Character22
+  characterConversations:
+  - Wow. Nice car.
+  - Where did you get that?
+  - Are you late why are nervous?
+  characterHelps:
+  - What orders?
+  - Is that about that group again?
+  - Can you bring us them quickly?
+  characterConversationAnswers:
+  - That was really hard to find it. That is the last third of it's kind.
+  - That is a long story. I will tell you later.
+  - I need to prepare the restaurant. But my orders did not come.
+  characterHelpAnswers:
+  - My tables. The factory did not deliver.
+  - How did you know?
+  - As soon as possible.
+  missionNumber: 17
+  solutionAnswers:
+  - Your deliver?
+  apriciates:
+  - Don't hesitate to ask for car.

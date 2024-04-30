@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
-  m_Name: Character13
+  m_Name: Character26
   m_EditorClassIdentifier: 
-  characterName: Character13
+  characterName: Character26
   characterConversations:
-  - They are sorry.
-  - Work is important.
   - Are you angry?
-  - Will you come to factory?
-  - Don't you think you are priceless?
-  - They want you back.
-  characterHelps: []
+  - Why are angry?
+  - Relax man.
+  characterHelps:
+  - How can i help you?
+  - Should it come from the station?
+  - Are there any other problem?
   characterConversationAnswers:
-  - We will se.
-  - Yes but...
-  - Not to you.
-  - No.
-  - Yes, i do but they don't.
-  - I don't know.
-  characterHelpAnswers: []
-  missionNumber: 9
+  - NO, I AM NOT.
+  - I SAID I AM NOT ANGRY.
+  - I AM RELAX.
+  characterHelpAnswers:
+  - I AM WAITING FOR MY HELICOPTER FOR ABOUT ONE HOUR.
+  - YES, IT SHOULD.
+  - NO, I DON'T
+  missionNumber: 18
   solutionAnswers:
-  - Will you come?
+  - Here is your order.
   apriciates:
-  - I am coming.
+  - FINALLY.

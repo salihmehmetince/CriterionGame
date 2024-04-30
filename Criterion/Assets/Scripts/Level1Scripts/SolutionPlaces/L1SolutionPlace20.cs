@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class L1SolutionPlace18 : MonoBehaviour
+public class L1SolutionPlace20 : MonoBehaviour
 {
-    private const string FINALSENDHELICOPTER = "SendHelicopter";
+    private const string FINALFOODDELIVERYTRUCK = "FoodDeliveryTruck";
 
     [SerializeField]
     private GameObject character;
-
-    [SerializeField]
-    private GameObject character2;
-
     private void OnTriggerEnter(Collider other)
     {
         Transform gObject = other.gameObject.transform;
         Transform parenGObject = gObject.parent;
         if (parenGObject != null)
         {
-            if (parenGObject.tag == FINALSENDHELICOPTER)
+            if (parenGObject.tag == FINALFOODDELIVERYTRUCK)
             {
                 Debug.Log("Görev tamamlandý");
                 gObject.SetParent(transform);
@@ -26,14 +22,11 @@ public class L1SolutionPlace18 : MonoBehaviour
                 gObject.localRotation = Quaternion.identity;
                 Transform player = GameObject.Find("Player").transform;
                 Debug.Log(player.name);
-                gObject.GetComponent<L1Helicopter>().liveHelicopter();
-                gObject.GetComponent<L1Helicopter>().enabled = false;
+                gObject.GetComponent<L1Car>().liveCar();
+                gObject.GetComponent<L1Car>().enabled = false;
                 Transform problemBox = character.transform.GetChild(3);
-                Transform problemBox2 = character2.transform.GetChild(3);
                 problemBox.gameObject.SetActive(false);
-                problemBox2.gameObject.SetActive(false);
                 character.GetComponent<L1Character>().IsMissionOver = true;
-                character2.GetComponent<L1Character>().IsMissionOver = true;
                 enabled = false;
             }
             else

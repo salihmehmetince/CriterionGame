@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
-  m_Name: Character14
+  m_Name: Character20
   m_EditorClassIdentifier: 
-  characterName: Character14
+  characterName: Character20
   characterConversations:
-  - Sweet fruits?
   - What are you doing?
-  - What kind of fruits?
+  - Did you close the buildings?
+  - Here is too bold.
   characterHelps:
-  - Is there a problem in the garden?
-  - "Can \u0130 help?"
-  - Where is the water?
+  - Why don't you leave?
+  - What can of vehicle?
+  - What about a bus?
   characterConversationAnswers:
-  - The best in the town.
-  - Prepearing the fruits.
-  - Ordinary but the best.
+  - I am waiting.
+  - Yes, we did.
+  - So i want to leave.
   characterHelpAnswers:
-  - Big one. That group made something to my water.
-  - Do you know how to use a helicopter?
-  - Nearthe factory.
-  missionNumber: 10
+  - We were waiting for a bus but did not come. Can you take us home?
+  - A car please. I am afraid of heights.
+  - For two bodies?
+  missionNumber: 16
   solutionAnswers:
-  - Best water for the best fruits.
+  - Here is the destination.
   apriciates:
-  - Remember to save for you some fruits.
+  - Thanks. I will never borrow my car that group again.

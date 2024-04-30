@@ -93,8 +93,8 @@ public class L1MouseLook : MonoBehaviour
 
         rotationX -= mouseY;
         rotationY += mouseX;
-        rotationX = Mathf.Clamp(rotationX, 0f, 180f);
-        rotationY = Mathf.Clamp(rotationY, -90f, 90f);
+        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+        rotationY = Mathf.Clamp(rotationY, 0f, 180f);
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
 
     }
@@ -106,8 +106,8 @@ public class L1MouseLook : MonoBehaviour
 
         rotationX -= mouseY;
         rotationY += mouseX;
-        rotationX = Mathf.Clamp(rotationX, 0f, 180f);
-        rotationY = Mathf.Clamp(rotationY, -90f, 90f);
+        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+        rotationY = Mathf.Clamp(rotationY, -180f, 0f);
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
 
     }

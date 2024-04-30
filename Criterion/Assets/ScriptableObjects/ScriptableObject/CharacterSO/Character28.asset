@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df931e76133ff4496a34d42aacd094, type: 3}
+  m_Name: Character28
+  m_EditorClassIdentifier: 
+  characterName: Character28
+  characterConversations:
+  - Is that your helicopter?
+  - How did you place it there?
+  - Are you a pilot?
+  characterHelps:
+  - Why are you closed? I want to eat there.
+  - Where did you order?
+  - I will bring it but you will learn me to park like that.
+  characterConversationAnswers:
+  - Yes, It is.
+  - It is my profession.
+  - I was but i bored. Suddenly i wanted to open a restaurant.
+  characterHelpAnswers:
+  - My food order did not come.
+  - From the factory which mechanic left.
+  - We will think about it.
+  missionNumber: 19
+  solutionAnswers:
+  - Tell me please.
+  apriciates:
+  - Practice, practice.

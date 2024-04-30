@@ -29,7 +29,6 @@ public class L1Character : MonoBehaviour
     {
         exclamationbox = transform.GetChild(3);
         animator = GetComponent<Animator>();
-        gameInput.onChoose += onChoosed;
     }
 
     protected virtual void onChoosed(object sender, GameInput.onChooseEventArgs e)
@@ -84,12 +83,14 @@ public class L1Character : MonoBehaviour
     }
     private void recognizePlayer()
     {
+        gameInput.onChoose += onChoosed;
         Transform speechBox = transform.GetChild(2);
         speechBox.gameObject.SetActive(true);
     }
 
     private void forgetPlayer()
     {
+        gameInput.onChoose -= onChoosed;
         Transform speechBox = transform.GetChild(2);
         speechBox.gameObject.SetActive(false);
     }
