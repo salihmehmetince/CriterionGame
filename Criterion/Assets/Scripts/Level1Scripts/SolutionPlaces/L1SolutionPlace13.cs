@@ -27,7 +27,7 @@ public class L1SolutionPlace13 : MonoBehaviour
                         gObject.transform.SetParent(transform);
                         gObject.transform.localPosition = Vector3.zero;
                         gObject.transform.localRotation = Quaternion.identity;
-                        gObject.GetComponent<L1GasTruck>().liveCar();
+                        gObject.GetComponent<L1GasTruck>().live();
                         gObject.GetComponent<L1GasTruck>().enabled = false;
                         Transform problemBox = character.GetChild(3);
                         problemBox.gameObject.SetActive(false);

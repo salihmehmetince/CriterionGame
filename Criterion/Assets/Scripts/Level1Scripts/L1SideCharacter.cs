@@ -6,24 +6,24 @@ using UnityEngine;
 public class L1SideCharacter : MonoBehaviour
 {
     [SerializeField]
-    private CharacterSO characterSO;
+    protected CharacterSO characterSO;
 
-    private const string FINALPLAYER = "Player";
-
-    [SerializeField]
-    private GameInput gameInput;
+    protected const string FINALPLAYER = "Player";
 
     [SerializeField]
-    private GameObject mainMissionCharacter;
+    protected GameInput gameInput;
+
+    [SerializeField]
+    protected GameObject mainMissionCharacter;
 
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         gameInput.onChoose += onChoosed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
 
         GameObject gObject = other.gameObject;
@@ -34,7 +34,7 @@ public class L1SideCharacter : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         GameObject gObject = other.gameObject;
 
@@ -43,18 +43,18 @@ public class L1SideCharacter : MonoBehaviour
             forgetPlayer();
         }
     }
-    private void recognizePlayer()
+    protected void recognizePlayer()
     {
         Transform speechBox = transform.GetChild(2);
         speechBox.gameObject.SetActive(true);
     }
 
-    private void forgetPlayer()
+    protected void forgetPlayer()
     {
         Transform speechBox = transform.GetChild(2);
         speechBox.gameObject.SetActive(false);
     }
-    private void onChoosed(object sender, GameInput.onChooseEventArgs e)
+    protected void onChoosed(object sender, GameInput.onChooseEventArgs e)
     {
         if (e.Choose.x == 0 && e.Choose.y == 1 && e.Choose.z == 0)
         {
@@ -84,7 +84,7 @@ public class L1SideCharacter : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         
     }

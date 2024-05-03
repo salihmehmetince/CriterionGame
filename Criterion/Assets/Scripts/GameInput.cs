@@ -28,6 +28,8 @@ public class GameInput : MonoBehaviour
 
     public event EventHandler onWork;
 
+    public event EventHandler onPause;
+
     public class onChooseEventArgs : EventArgs
     {
         private Vector3 choose;
@@ -46,6 +48,7 @@ public class GameInput : MonoBehaviour
         inputActs.Player.Jump.performed+= onJumpPerformed;
         inputActs.Player.Choose.performed += onChoosePerformed;
         inputActs.Player.Work.performed += onWorkPerformed;
+        inputActs.Player.Pause.performed += onPausePerformed;
         inputActs.Car.Enable();
         inputActs.Car.Horn.performed += onHornPerformed;
         inputActs.Car.Interact.performed+=onCarInteractPerformed;
@@ -54,6 +57,11 @@ public class GameInput : MonoBehaviour
         inputActs.Plane.Enable();
         inputActs.Plane.Interact.performed += onPlaneInteracted;
         
+    }
+
+    private void onPausePerformed(InputAction.CallbackContext obj)
+    {
+        onPause?.Invoke(this,EventArgs.Empty);
     }
 
     private void onWorkPerformed(InputAction.CallbackContext obj)

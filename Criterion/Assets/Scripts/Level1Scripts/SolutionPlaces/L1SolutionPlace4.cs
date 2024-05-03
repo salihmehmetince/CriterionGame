@@ -34,7 +34,7 @@ public class L1SolutionPlace4 : MonoBehaviour
                 jerryCan.SetParent(transform);
                 jerryCan.transform.localPosition = new Vector3(0f,1f,0f);
                 Transform player = GameObject.Find("Player").transform;
-                gObject.GetComponent<L1Car>().liveCar();
+                gObject.GetComponent<L1Car>().live();
                 gObject.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
                 gObject.transform.localPosition = new Vector3(720f,0f,20f);
                 Transform problemBox = character.transform.GetChild(3);

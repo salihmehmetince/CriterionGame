@@ -22,7 +22,7 @@ public class L1SolutionPlace21 : MonoBehaviour
                 gObject.localRotation = Quaternion.identity;
                 Transform player = GameObject.Find("Player").transform;
                 Debug.Log(player.name);
-                gObject.GetComponent<L1Car>().liveCar();
+                gObject.GetComponent<L1Car>().live();
                 gObject.GetComponent<L1Car>().enabled = false;
                 Transform problemBox = character.transform.GetChild(3);
                 problemBox.gameObject.SetActive(false);

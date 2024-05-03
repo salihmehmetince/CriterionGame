@@ -37,6 +37,7 @@ TagManager:
   - WorkObject
   - FruitTruck
   - Fruit
+  - GroupMember
   layers:
   - Default
   - TransparentFX

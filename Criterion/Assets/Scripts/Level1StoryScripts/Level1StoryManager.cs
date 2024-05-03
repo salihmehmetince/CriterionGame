@@ -22,6 +22,8 @@ public class Level1StoryManager : MonoBehaviour
     [SerializeField]
     private Transform character;
 
+    private float speed = 100f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +51,8 @@ public class Level1StoryManager : MonoBehaviour
         {
             index++;
             storyText.text=rows[index];
-            character.position = Vector3.Lerp(character.position,new Vector3(-80f + ((130f/(rows.Length))*index), character.position.y, character.position.z),1f);
+            character.position = Vector3.Lerp(character.position,new Vector3(-80f + ((130f/(rows.Length))*index), character.position.y, character.position.z),speed*Time.deltaTime);
+            character.GetComponent<Animator>().SetBool("IsRunning",true);
         }
         else
         {

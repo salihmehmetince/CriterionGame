@@ -61,7 +61,8 @@ public class L1Player : MonoBehaviour
 
     private bool canChoose = false;
 
-    private Transform canvas;
+    [SerializeField]
+    private Transform speechScreen;
 
     private Transform speech;
 
@@ -85,6 +86,15 @@ public class L1Player : MonoBehaviour
 
     private bool canWork = false;
 
+    private const string FINALGROUPMEMBER = "GroupMember";
+
+    [SerializeField]
+    private GameObject gameOverScreen;
+
+    private bool isPaused = false;
+
+    [SerializeField]
+    private GameObject pauseScreen;
     public struct Mission
     {
         private int missionregion;
@@ -137,6 +147,10 @@ public class L1Player : MonoBehaviour
         {
             recognizeWorkObject(gObject.transform);
         }
+        else if(gObject.tag==FINALGROUPMEMBER)
+        {
+            gameOver();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -178,14 +192,20 @@ public class L1Player : MonoBehaviour
 
     private void Start()
     {
-        canvas = transform.GetChild(3);
-        speech = canvas.GetChild(1);
+        Transform speechBackground = speechScreen.GetChild(0);
+        speech = speechBackground.GetChild(0);
         speechText = speech.GetComponent<TextMeshProUGUI>();
         characterController = GetComponent<CharacterController>();
         gameInput.onInteract += onInteracted;
         gameInput.onJump += onJumped;
         gameInput.onChoose += onChoosed;
         gameInput.onWork += onWorked;
+        gameInput.onPause += onPaused;
+    }
+
+    private void onPaused(object sender, EventArgs e)
+    {
+        pause();
     }
 
     private void onWorked(object sender, EventArgs e)
@@ -451,7 +471,7 @@ public class L1Player : MonoBehaviour
                 {
                     if(interactionObject.GetComponent<L1Car>().CanDrive)
                     {
-                        interactionObject.GetComponent<L1Car>().enterCar();
+                        interactionObject.GetComponent<L1Car>().enter();
 
                     }
                 }
@@ -459,14 +479,14 @@ public class L1Player : MonoBehaviour
                 {
                     if (interactionObject.GetComponent<L1Helicopter>().CanDrive)
                     {
-                        interactionObject.GetComponent<L1Helicopter>().enterHelicopter();
+                        interactionObject.GetComponent<L1Helicopter>().enter();
                     }
                 }
                 else if (interactionObject.tag == FINALAIRCRAFT)
                 {
                     if (interactionObject.GetComponent<L1Plane>().CanDrive)
                     {
-                        interactionObject.GetComponent<L1Plane>().enterPlane();
+                        interactionObject.GetComponent<L1Plane>().enter();
                     }
                 }
             }
@@ -494,7 +514,7 @@ public class L1Player : MonoBehaviour
             {
                 if (!interactionObject.GetComponent<L1Character>().IsMissionOver)
                 {
-                    canvas.gameObject.SetActive(true);
+                    speechScreen.gameObject.SetActive(true);
                     string name = characterSO.getName();
                     List<string> conversations = characterSO.getConversations();
                     List<string> helps = characterSO.getHelps();
@@ -518,7 +538,7 @@ public class L1Player : MonoBehaviour
                 }
                 else
                 {
-                    canvas.gameObject.SetActive(true);
+                    speechScreen.gameObject.SetActive(true);
                     List<String> solutionAnswers = characterSO.getSolutionAnswers();
                     speechText.text = "";
                     for (int i = 0; i < solutionAnswers.Count; i++)
@@ -532,7 +552,7 @@ public class L1Player : MonoBehaviour
             {
                 if (!interactionObject.GetComponent<L1SideCharacter>().getMainMissionCharacter().GetComponent<L1Character>().IsMissionOver)
                 {
-                    canvas.gameObject.SetActive(true);
+                    speechScreen.gameObject.SetActive(true);
                     string name = characterSO.getName();
                     List<string> conversations = characterSO.getConversations();
                     List<string> helps = characterSO.getHelps();
@@ -556,7 +576,7 @@ public class L1Player : MonoBehaviour
                 }
                 else
                 {
-                    canvas.gameObject.SetActive(true);
+                    speechScreen.gameObject.SetActive(true);
                     List<String> solutionAnswers = characterSO.getSolutionAnswers();
                     speechText.text = "";
                     for (int i = 0; i < solutionAnswers.Count; i++)
@@ -570,7 +590,7 @@ public class L1Player : MonoBehaviour
             {
                 if(!interactionObject.GetComponent<L1InteractableSideCharacters>().IsRightChoice)
                 {
-                    canvas.gameObject.SetActive(true);
+                    speechScreen.gameObject.SetActive(true);
                     string name = characterSO.getName();
                     List<string> conversations = characterSO.getConversations();
                     speechText.text = "Hello! My name is ";
@@ -586,7 +606,7 @@ public class L1Player : MonoBehaviour
                 }
                 else
                 {
-                    canvas.gameObject.SetActive(true);
+                    speechScreen.gameObject.SetActive(true);
                     List<String> solutionAnswers = characterSO.getSolutionAnswers();
                     speechText.text = "";
                     for (int i = 0; i < solutionAnswers.Count; i++)
@@ -639,8 +659,7 @@ public class L1Player : MonoBehaviour
         canInteract = false;
         interactionObject.GetComponent<L1Character>().enabled = false;
         interactionObject = null;
-        Transform canvas = transform.GetChild(3);
-        canvas.gameObject.SetActive(false);
+        speechScreen.gameObject.SetActive(false);
     }
 
     private void forgetItem()
@@ -660,8 +679,7 @@ public class L1Player : MonoBehaviour
         canChoose = false;
         canInteract = false;
         interactionObject = null;
-        Transform canvas = transform.GetChild(3);
-        canvas.gameObject.SetActive(false);
+        speechScreen.gameObject.SetActive(false);
     }
 
     private void forgetInteractableSideCharacter()
@@ -669,8 +687,8 @@ public class L1Player : MonoBehaviour
         canChoose = false;
         canInteract = false;
         interactionObject = null;
-        Transform canvas = transform.GetChild(3);
-        canvas.gameObject.SetActive(false);
+        speechScreen.gameObject.SetActive(false);
+
     }
 
     private void recognizeCar(GameObject gObject)
@@ -728,22 +746,19 @@ public class L1Player : MonoBehaviour
     {
         canInteract = false;
         interactionObject = null;
-        Transform canvas = transform.GetChild(3);
-        canvas.gameObject.SetActive(false);
+        speechScreen.gameObject.SetActive(false);
     }
     private void forgetHelicopter()
     {
         canInteract = false;
         interactionObject = null;
-        Transform canvas = transform.GetChild(3);
-        canvas.gameObject.SetActive(false);
+        speechScreen.gameObject.SetActive(false);
     }
     private void forgetPlane()
     {
         canInteract = false;
         interactionObject = null;
-        Transform canvas = transform.GetChild(3);
-        canvas.gameObject.SetActive(false);
+        speechScreen.gameObject.SetActive(false);
     }
 
     public void enablePlayerInputActions()
@@ -766,6 +781,28 @@ public class L1Player : MonoBehaviour
     {
         item.transform.SetParent(null);
         canTake = true;
+    }
+
+    private void gameOver()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        gameOverScreen.SetActive(true);
+    }
+
+    private void pause()
+    {
+        isPaused = !isPaused;
+        if (isPaused)
+        {
+            pauseScreen.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            pauseScreen.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
     }
 
 }

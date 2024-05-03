@@ -3,14 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class L1Helicopter : MonoBehaviour
+public class L1Helicopter : L1Vehicle
 {
-    [SerializeField]
-    private GameInput gameInput;
-
-    private const string FINALPLAYER = "Player";
-
-    private CharacterController characterController;
 
     private AudioSource helicopterSoundEffect;
 
@@ -33,10 +27,8 @@ public class L1Helicopter : MonoBehaviour
 
     private float minFlytAltitude = 100f;
 
-    [SerializeField]
-    private bool canDrive = false;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         gameInput.onHelicopterInteract += onHelicopterInteracted;
         Transform steeringWheel = transform.GetChild(0);
@@ -50,47 +42,16 @@ public class L1Helicopter : MonoBehaviour
 
     private void onHelicopterInteracted(object sender, EventArgs e)
     {
-        liveHelicopter();
+        live();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         drive();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        GameObject gObject = other.gameObject;
-
-        if (gObject.tag == FINALPLAYER)
-        {
-            recognizePlayer();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        GameObject gObject = other.gameObject;
-
-        if (gObject.tag == FINALPLAYER)
-        {
-            forgetPlayer();
-        }
-    }
-    private void recognizePlayer()
-    {
-        Transform steeringWheelBox = transform.GetChild(0);
-        steeringWheelBox.gameObject.SetActive(true);
-    }
-
-    private void forgetPlayer()
-    {
-        Transform steeringWheelBox = transform.GetChild(0);
-        steeringWheelBox.gameObject.SetActive(false);
-    }
-
-    private void drive()
+    protected override void drive()
     {
         float frontDirection = gameInput.getHelicopterMovementVectorNormalized().y;
 
@@ -166,7 +127,7 @@ public class L1Helicopter : MonoBehaviour
         characterController.Move(move * Time.deltaTime);
     }
 
-    public void liveHelicopter()
+    public override  void live()
     {
         Transform player = null;
         player = GameObject.Find("Player").transform;
@@ -178,7 +139,7 @@ public class L1Helicopter : MonoBehaviour
         enabled = false;
     }
 
-    public void enterHelicopter()
+    public override void enter()
     {
         enabled = true;
         Transform player = null;
@@ -190,18 +151,5 @@ public class L1Helicopter : MonoBehaviour
         player.GetComponent<L1Player>().enabled = false;
         gameInput.getInputActs().Player.Disable();
         gameInput.getInputActs().Helicopter.Enable();
-    }
-
-    public bool CanDrive
-    {
-        get
-        {
-            return canDrive;
-        }
-
-        set
-        {
-            canDrive = value;
-        }
     }
 }

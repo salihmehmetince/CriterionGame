@@ -16,7 +16,7 @@ public class L1SolutionPlace7 : MonoBehaviour
             if(gObject.transform.parent.tag==FINALHARDWORKÝNGCAR)
             {
                 Transform player = gObject.transform.GetChild(4);
-                gObject.GetComponent<L1Car>().liveCar();
+                gObject.GetComponent<L1Car>().live();
                 gObject.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
                 gObject.transform.localPosition = new Vector3(-702f,0f,-650);
                 Transform problemBox = character.transform.GetChild(3);

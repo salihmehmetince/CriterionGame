@@ -26,7 +26,7 @@ public class L1SolutionPlace18 : MonoBehaviour
                 gObject.localRotation = Quaternion.identity;
                 Transform player = GameObject.Find("Player").transform;
                 Debug.Log(player.name);
-                gObject.GetComponent<L1Helicopter>().liveHelicopter();
+                gObject.GetComponent<L1Helicopter>().live();
                 gObject.GetComponent<L1Helicopter>().enabled = false;
                 Transform problemBox = character.transform.GetChild(3);
                 Transform problemBox2 = character2.transform.GetChild(3);

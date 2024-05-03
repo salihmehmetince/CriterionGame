@@ -7,28 +7,36 @@ using UnityEngine;
 public class L1Character : MonoBehaviour
 {
     [SerializeField]
-    private CharacterSO characterSO;
-    private const string FINALPLAYER = "Player";
+    protected CharacterSO characterSO;
 
-    private Animator animator;
+    protected const string FINALPLAYER = "Player";
 
-    private const string finalIsWalking = "IsWalking";
+    protected Animator animator;
 
-    private bool isMissionStart = false;
+    protected const string finalIsWalking = "IsWalking";
 
-    [SerializeField]
-    private GameInput gameInput;
-
-    private Transform exclamationbox;
+    protected bool isMissionStart = false;
 
     [SerializeField]
-    private GameObject solutionPlace;
+    protected GameInput gameInput;
 
-    private bool isMissionOver=false;
-    private void Start()
+    protected Transform exclamationbox;
+
+    [SerializeField]
+    protected GameObject solutionPlace;
+
+    protected bool isMissionOver=false;
+
+    [SerializeField]
+    protected List<GameObject> vehicles = new List<GameObject>();
+    protected void Start()
     {
         exclamationbox = transform.GetChild(3);
         animator = GetComponent<Animator>();
+        for(int i=0;i<vehicles.Count;i++)
+        {
+            vehicles[i].GetComponent<L1Vehicle>().CanDrive = true;
+        }
     }
 
     protected virtual void onChoosed(object sender, GameInput.onChooseEventArgs e)
@@ -61,7 +69,7 @@ public class L1Character : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
 
         GameObject gObject = other.gameObject;
@@ -72,7 +80,7 @@ public class L1Character : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         GameObject gObject = other.gameObject;
 
@@ -81,14 +89,14 @@ public class L1Character : MonoBehaviour
             forgetPlayer();
         }
     }
-    private void recognizePlayer()
+    protected void recognizePlayer()
     {
         gameInput.onChoose += onChoosed;
         Transform speechBox = transform.GetChild(2);
         speechBox.gameObject.SetActive(true);
     }
 
-    private void forgetPlayer()
+    protected void forgetPlayer()
     {
         gameInput.onChoose -= onChoosed;
         Transform speechBox = transform.GetChild(2);
@@ -100,7 +108,7 @@ public class L1Character : MonoBehaviour
         return characterSO;
     }
 
-    protected void startMission()
+    protected virtual void startMission()
     {
         exclamationbox.gameObject.SetActive(true);
         Debug.Log(exclamationbox.parent);

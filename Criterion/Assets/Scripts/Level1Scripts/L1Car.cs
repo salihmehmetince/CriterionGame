@@ -5,16 +5,8 @@ using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class L1Car : MonoBehaviour
+public class L1Car : L1Vehicle
 {
-    [SerializeField]
-    private GameInput gameInput;
-
-    protected const string FINALPLAYER = "Player";
-
-    private CharacterController characterController;
-
-    private AudioSource carSoundEffect;
 
     private Transform wheels;
 
@@ -31,16 +23,13 @@ public class L1Car : MonoBehaviour
 
     private float maxBackSpeed = -50f;
 
-    [SerializeField]
-    private bool canDrive=false;
-
-    private void Start()
+    protected override void Start()
     {
         gameInput.onCarInteract += onCarInteracted;
         Transform steeringWheel=transform.GetChild(0);
         steeringWheel.gameObject.SetActive(false);
         characterController = GetComponent<CharacterController>();
-        carSoundEffect = GetComponent<AudioSource>();
+        vehicleSoundEffect = GetComponent<AudioSource>();
         gameInput.onHorn += gameInputOnHorn;
         wheels=transform.GetChild(1);
         frontLeftWheel = wheels.GetChild(0);
@@ -49,53 +38,25 @@ public class L1Car : MonoBehaviour
         backRightWheel = wheels.GetChild(3);
     }
 
-    private void onCarInteracted(object sender, EventArgs e)
-    {
-        liveCar();
-    }
-
-    private void Update()
+    protected override void Update()
     {
         drive();
     }
 
+    private void onCarInteracted(object sender, EventArgs e)
+    {
+        live();
+    }
+
+
     private void gameInputOnHorn(object sender, EventArgs e)
     {
-        carSoundEffect.Play();
+        vehicleSoundEffect.Play();
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        GameObject gObject = other.gameObject;
 
-        if (gObject.tag == FINALPLAYER)
-        {
-            recognizePlayer();
-        }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        GameObject gObject = other.gameObject;
-
-        if (gObject.tag == FINALPLAYER)
-        {
-            forgetPlayer();
-        }
-    }
-    protected void recognizePlayer()
-    {
-        Transform steeringWheelBox = transform.GetChild(0);
-        steeringWheelBox.gameObject.SetActive(true);
-    }
-
-    private void forgetPlayer()
-    {
-        Transform steeringWheelBox = transform.GetChild(0);
-        steeringWheelBox.gameObject.SetActive(false);
-    }
-
-    protected virtual void drive()
+    protected override void drive()
     {
         float z = gameInput.getCarMovementVectorNormalized().y;
 
@@ -170,7 +131,7 @@ public class L1Car : MonoBehaviour
         characterController.Move(move *Time.deltaTime);
     }
 
-    public void liveCar()
+    public override void live()
     {
         Transform player = null;
         player = GameObject.Find("Player").transform;
@@ -182,7 +143,7 @@ public class L1Car : MonoBehaviour
         enabled = false;
     }
 
-    public virtual void enterCar()
+    public override void enter()
     {
         enabled = true;
         Transform player = null;
@@ -196,16 +157,9 @@ public class L1Car : MonoBehaviour
         gameInput.getInputActs().Car.Enable();
     }
 
-    public bool CanDrive
+    public float Speed
     {
-        get
-        {
-            return canDrive;
-        }
-
-        set
-        {
-            canDrive = value;
-        }
+        get { return speed; }
     }
+
 }

@@ -71,6 +71,15 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f0a1906-ad60-4d42-889d-d6d3b3f3cdb5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -236,6 +245,17 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Work"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fd0f34c-e7cf-4f58-b03e-d742121f08d9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -589,6 +609,7 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Choose = m_Player.FindAction("Choose", throwIfNotFound: true);
         m_Player_Work = m_Player.FindAction("Work", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
@@ -669,6 +690,7 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Choose;
     private readonly InputAction m_Player_Work;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @InputActs m_Wrapper;
@@ -678,6 +700,7 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Choose => m_Wrapper.m_Player_Choose;
         public InputAction @Work => m_Wrapper.m_Player_Work;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -702,6 +725,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Work.started += instance.OnWork;
             @Work.performed += instance.OnWork;
             @Work.canceled += instance.OnWork;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -721,6 +747,9 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
             @Work.started -= instance.OnWork;
             @Work.performed -= instance.OnWork;
             @Work.canceled -= instance.OnWork;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -923,6 +952,7 @@ public partial class @InputActs: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnChoose(InputAction.CallbackContext context);
         void OnWork(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface ICarActions
     {

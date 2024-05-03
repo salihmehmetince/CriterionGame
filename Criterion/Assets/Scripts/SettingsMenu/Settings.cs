@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    private static float soundEffectVolume=0.5f;
-    private static float musicVolume=0.5f;
+    private static float soundEffectVolume;
+    private static float musicVolume;
 
     [SerializeField]
     private Slider soundEffectSlider;
@@ -100,11 +100,13 @@ public class Settings : MonoBehaviour
 
     public static float getMusicVolume()
     {
+        musicVolume= PlayerPrefs.GetFloat("musicVolume");
         return musicVolume;
     }
 
     public static float getSoundEffectVolume()
     {
+        soundEffectVolume = PlayerPrefs.GetFloat("soundEffectVolume");
         return soundEffectVolume;
     }
 

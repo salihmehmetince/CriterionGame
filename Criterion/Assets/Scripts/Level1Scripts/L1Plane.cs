@@ -5,14 +5,8 @@ using System.Net.NetworkInformation;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
-public class L1Plane : MonoBehaviour
+public class L1Plane : L1Vehicle
 {
-    [SerializeField]
-    private GameInput gameInput;
-
-    private const string FINALPLAYER = "Player";
-
-    private CharacterController characterController;
 
     private AudioSource planeSoundEffect;
 
@@ -42,10 +36,8 @@ public class L1Plane : MonoBehaviour
 
     private float sideSpeed=0f;
 
-    [SerializeField]
-    private bool canDrive = false;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         Transform steeringWheel = transform.GetChild(0);
         steeringWheel.gameObject.SetActive(false);
@@ -57,56 +49,19 @@ public class L1Plane : MonoBehaviour
         
     }
 
-    private void onPlaneInteracted(object sender, EventArgs e)
-    {
-        livePlane();
-    }
-
-    void Update()
+    protected override void Update()
     {
         drive();
-        Debug.Log(isGrounded);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void onPlaneInteracted(object sender, EventArgs e)
     {
-        GameObject gObject = other.gameObject;
-
-        if (gObject.tag == FINALPLAYER)
-        {
-            recognizePlayer();
-        }
-        else if(gObject.tag == FINALGROUND)
-        {
-        }
+        live();
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        GameObject gObject = other.gameObject;
 
-        if (gObject.tag == FINALPLAYER)
-        {
-            forgetPlayer();
-        }
-        else if (gObject.tag == FINALGROUND)
-        {
-        }
 
-    }
-    private void recognizePlayer()
-    {
-        Transform steeringWheelBox = transform.GetChild(0);
-        steeringWheelBox.gameObject.SetActive(true);
-    }
-
-    private void forgetPlayer()
-    {
-        Transform steeringWheelBox = transform.GetChild(0);
-        steeringWheelBox.gameObject.SetActive(false);
-    }
-
-    private void drive()
+    protected override void drive()
     {
         float frontDirection = gameInput.getPlaneMovementVectorNormalized().y;
 
@@ -233,7 +188,7 @@ public class L1Plane : MonoBehaviour
         Debug.Log("Move:"+move);
     }
 
-    private void livePlane()
+    public  override void live()
     {
         Transform player = null;
         player = GameObject.Find("Player").transform;
@@ -245,7 +200,7 @@ public class L1Plane : MonoBehaviour
         enabled = false;
     }
 
-    public void enterPlane()
+    public override void enter()
     {
         enabled = true;
         Transform player = null;
@@ -259,16 +214,4 @@ public class L1Plane : MonoBehaviour
         gameInput.getInputActs().Plane.Enable();
     }
 
-    public bool CanDrive
-    {
-        get
-        {
-            return canDrive;
-        }
-
-        set
-        {
-            canDrive = value;
-        }
-    }
 }

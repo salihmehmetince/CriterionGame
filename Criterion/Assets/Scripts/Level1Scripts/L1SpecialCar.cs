@@ -6,11 +6,11 @@ public class L1SpecialCar : L1Car
 {
     private bool canDriveSpecialCar = false;
 
-    public override void enterCar()
+    public override void enter()
     {
         if(canDriveSpecialCar)
         {
-            base.enterCar();
+            base.enter();
         }
     }
 
