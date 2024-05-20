@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class L1GroupMember : MonoBehaviour
 {
     private Animator animator;
 
     private const string FINALISRUNNING = "IsRunning";
-
-    private CharacterController characterController;
 
     private float followSpeed = 70f;
 
@@ -21,25 +23,66 @@ public class L1GroupMember : MonoBehaviour
 
     private Vector3 firstposition;
 
+    
+    private NavMeshAgent agent;
+
+    private GameObject speechBox;
+
+    private Quaternion initialRotation;
+
+    private string []messages = { "Hey","Can you stop?","Stop please","Who are you?"};
+    private float timer = 0f;
+    private float timerMax = 5f;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
+        animator.SetBool(FINALISRUNNING, false);
         firstposition = transform.position;
+        agent=GetComponent<NavMeshAgent>();
+        speechBox = transform.GetChild(2).gameObject;
+        speechBox.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+        speechBox.GetComponent<RectTransform>().localPosition = new Vector3(-5f,-8f,-6f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        chase();
         if(isChase)
+        {
+            if (timer < timerMax)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                timer = 0f;
+                talkWithPlayer();
+            }
+        }
+
+        focusSpeechBox();
+
+        
+    }
+
+    private void chase()
+    {
+        if (isChase)
         {
             chasePlayer();
         }
         else
         {
-            returnFirstPosition();
+            if (transform.position != firstposition)
+            {
+                returnFirstPosition();
+            }
         }
+        transform.rotation = Quaternion.Euler(90f, transform.eulerAngles.y, transform.eulerAngles.z);
+
     }
 
     private void chasePlayer()
@@ -56,13 +99,15 @@ public class L1GroupMember : MonoBehaviour
             stop();
         }
         transform.LookAt(player);
+        agent.velocity = agent.desiredVelocity;
     }
 
     private void runTo(Vector3 target)
     {
         visualRun();
         Vector3 targetPosition=new Vector3(target.x,0f,target.z);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        agent.destination=targetPosition;
+        //transform.position = Vector3.MoveTowards(transform.position, targetPosition, followSpeed * Time.deltaTime);
 
     }
 
@@ -90,8 +135,7 @@ public class L1GroupMember : MonoBehaviour
     private void returnFirstPosition()
     {
         float distance = Vector3.Distance(transform.position, firstposition);
-
-        if (distance > 0f)
+        if (distance > 4f)
         {
             runTo(firstposition);
         }
@@ -100,5 +144,28 @@ public class L1GroupMember : MonoBehaviour
             stop();
         }
         transform.LookAt(firstposition);
+    }
+
+    private void talkWithPlayer()
+    {
+        Invoke(nameof(talk), 3f);
+    }
+
+    private void talk()
+    {
+        Debug.Log(speechBox.name);
+        speechBox.GetComponent<TextMeshPro>().text =messages[Random.Range(0, messages.Length)];
+        Invoke(nameof(stopTalk), 3f);
+    }
+
+    private void stopTalk()
+    {
+        speechBox.GetComponent<TextMeshPro>().text = "";
+
+    }
+
+    private void focusSpeechBox()
+    {
+        speechBox.transform.LookAt(player);
     }
 }

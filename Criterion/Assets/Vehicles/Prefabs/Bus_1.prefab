@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 5162496634744695406}
   - component: {fileID: 8357392277485744159}
   - component: {fileID: 1243752306265769770}
+  - component: {fileID: 6958393900971565437}
   m_Layer: 8
   m_Name: Bus_1
   m_TagString: Car
@@ -648,6 +649,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &6958393900971565437
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959030373088092}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.75, y: 2, z: 2}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1984030507710860
 GameObject:
   m_ObjectHideFlags: 0

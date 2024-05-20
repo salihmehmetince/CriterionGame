@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 6524613155128662062}
   - component: {fileID: 6195018770382310039}
   - component: {fileID: 1472139977678170905}
+  - component: {fileID: 8301048685879022409}
   m_Layer: 8
   m_Name: Vehicle_Container_color01_separate
   m_TagString: Car
@@ -207,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInput: {fileID: 0}
+  canDrive: 0
 --- !u!143 &6195018770382310039
 CharacterController:
   m_ObjectHideFlags: 0
@@ -329,6 +331,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &8301048685879022409
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 2.5, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &127116658885810057
 GameObject:
   m_ObjectHideFlags: 0

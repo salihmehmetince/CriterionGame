@@ -10,7 +10,7 @@ public class L1GroupArea : MonoBehaviour
     [SerializeField]
     private Transform player;
 
-    private float chaseDistance = 400f;
+    private float chaseDistance = 300f;
 
     private const string FINALPLAYER = "Player";
 

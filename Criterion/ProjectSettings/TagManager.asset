@@ -38,6 +38,10 @@ TagManager:
   - FruitTruck
   - Fruit
   - GroupMember
+  - MovingBus
+  - Corner
+  - TrafficLamb
+  - BusStop
   layers:
   - Default
   - TransparentFX

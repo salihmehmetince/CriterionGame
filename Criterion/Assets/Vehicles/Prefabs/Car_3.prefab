@@ -544,6 +544,7 @@ GameObject:
   - component: {fileID: -2423377559180641023}
   - component: {fileID: -5266458346781980193}
   - component: {fileID: 174491162548025544}
+  - component: {fileID: 1804026824913839613}
   m_Layer: 8
   m_Name: Car_3
   m_TagString: Car
@@ -631,6 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInput: {fileID: 0}
+  canDrive: 0
 --- !u!143 &-5266458346781980193
 CharacterController:
   m_ObjectHideFlags: 0
@@ -653,7 +655,7 @@ CharacterController:
   m_Height: 0.1
   m_Radius: 0.1
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -753,6 +755,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &1804026824913839613
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.625, y: 0.5, z: 1.2}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5699782930512037836
 GameObject:
   m_ObjectHideFlags: 0

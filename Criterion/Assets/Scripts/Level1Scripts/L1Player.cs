@@ -95,6 +95,8 @@ public class L1Player : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseScreen;
+
+    private const string FINALMOVINGBUS = "MovingBus";
     public struct Mission
     {
         private int missionregion;
@@ -146,6 +148,9 @@ public class L1Player : MonoBehaviour
         else if (gObject.tag == FINALWORKOBJECT)
         {
             recognizeWorkObject(gObject.transform);
+        }else if(gObject.tag==FINALMOVINGBUS)
+        {
+            recognizeMovingBus(gObject);
         }
         else if(gObject.tag==FINALGROUPMEMBER)
         {
@@ -183,6 +188,10 @@ public class L1Player : MonoBehaviour
         else if (gObject.tag == FINALITEM)
         {
             forgetItem();
+        }
+        else if(gObject.tag==FINALMOVINGBUS)
+        {
+            forgetMovingBus();
         }
         else if(gObject.tag == FINALWORKOBJECT)
         {
@@ -489,7 +498,14 @@ public class L1Player : MonoBehaviour
                         interactionObject.GetComponent<L1Plane>().enter();
                     }
                 }
-            }
+                else if (interactionObject.tag == FINALMOVINGBUS)
+                {
+                    if (interactionObject.GetComponent<L1MovingBus>().CanEnter)
+                    {
+                        interactionObject.GetComponent<L1MovingBus>().enter();
+                    }
+                }
+        }
         
             if(item!=null)
             {
@@ -703,6 +719,12 @@ public class L1Player : MonoBehaviour
         canInteract = true;
     }
 
+    private void recognizeMovingBus(GameObject gObject)
+    {
+        interactionObject = gObject;
+        canInteract = true;
+    }
+
 
     private void move()
     {
@@ -759,6 +781,13 @@ public class L1Player : MonoBehaviour
         canInteract = false;
         interactionObject = null;
         speechScreen.gameObject.SetActive(false);
+    }
+
+    private void forgetMovingBus()
+    {
+        canInteract = false;
+        interactionObject = null;
+        //speechScreen.gameObject.SetActive(false);
     }
 
     public void enablePlayerInputActions()
