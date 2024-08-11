@@ -503,7 +503,15 @@ public class L1Player : MonoBehaviour
                     if (interactionObject.GetComponent<L1MovingBus>().CanEnter)
                     {
                         interactionObject.GetComponent<L1MovingBus>().enter();
+                    }else
+                {
+                    if (interactionObject.GetComponent<L1MovingBus>().ShouldStop)
+                    {
+
+                        interactionObject.GetComponent<L1MovingBus>().live();
                     }
+                }
+                    
                 }
         }
         
@@ -793,6 +801,11 @@ public class L1Player : MonoBehaviour
     public void enablePlayerInputActions()
     {
         gameInput.getInputActs().Player.Enable();
+    }
+
+    public void disablePlayerInputActions()
+    {
+        gameInput.getInputActs().Player.Disable();
     }
 
     public List<Mission> getmissions()

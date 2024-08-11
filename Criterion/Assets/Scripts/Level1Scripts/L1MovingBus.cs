@@ -31,6 +31,8 @@ public class L1MovingBus : MonoBehaviour
     private const string FINALBUSSTOP = "BusStop";
 
     private bool shouldStop=false;
+
+    private const string FINALPLAYER = "Player";
     // Start is called before the first frame update
     void Start()
     {
@@ -41,16 +43,6 @@ public class L1MovingBus : MonoBehaviour
     void Update()
     {
         move();
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("e");
-            if(shouldStop)
-            {
-                Debug.Log("e oldu");
-                live();
-            }
-        }
-        Debug.Log(shouldStop);
     }
 
     public void live()
@@ -59,9 +51,8 @@ public class L1MovingBus : MonoBehaviour
         player = GameObject.Find("Player").transform;
         player.position = new Vector3(player.position.x + 20f, player.position.y, player.position.z);
         player.GetComponent<L1Player>().enabled = true;
-        player.GetComponent<L1Player>().enablePlayerInputActions();
+        player.GetComponent<CapsuleCollider>().enabled = true;
         player.parent = null;
-        Debug.Log("indi");
     }
 
     public void enter()
@@ -74,7 +65,8 @@ public class L1MovingBus : MonoBehaviour
         player.localPosition = playerPosition.localPosition;
         player.localRotation = Quaternion.identity;
         player.GetComponent<L1Player>().enabled = false;
-        shouldStop=false;
+        player.GetComponent<CapsuleCollider>().enabled = false;
+        shouldStop = false;
         canEnter=false;
         GetComponent<BoxCollider>().enabled = false;
         Invoke(nameof(activateCollider), 3f);
@@ -106,17 +98,24 @@ public class L1MovingBus : MonoBehaviour
             index = index % corners.Count;
             gObject.transform.localPosition = corners[index].localPosition;
             agent.velocity = Vector3.zero;
-            Debug.Log("b");
         }
         else if(gObject.tag==FINALTRAFFICLAMB)
         {
             isMove = false;
             agent.enabled = false;
             Invoke(nameof(go), 2f);
-            Debug.Log("a");
         }
         else if (gObject.tag == FINALBUSSTOP)
         {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                if (transform.GetChild(i).tag == FINALPLAYER)
+                {
+                    shouldStop = true;
+                    break;
+                }
+            }
+
             if (shouldStop)
             {
                 isMove = false;

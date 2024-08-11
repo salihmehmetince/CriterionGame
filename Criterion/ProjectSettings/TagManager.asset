@@ -42,6 +42,7 @@ TagManager:
   - Corner
   - TrafficLamb
   - BusStop
+  - SkyPart
   layers:
   - Default
   - TransparentFX

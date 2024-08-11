@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 8932156837673542076}
   - component: {fileID: 4522080640474909779}
   - component: {fileID: 4708877476847062437}
+  - component: {fileID: 5358010064727606214}
   m_Layer: 0
   m_Name: Character5
   m_TagString: GroupMember
@@ -846,6 +847,52 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5358010064727606214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952303788907347644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc11b020bd450b41a531d9f33ea1cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 3
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.74773407
+      value: -0.030059814
+      inSlope: 13.413939
+      outSlope: 13.413939
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0
+      value: 10
+      inSlope: -0.034714103
+      outSlope: -0.034714103
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.36941108
+      outWeight: 0.38708162
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -10
+      outSlope: -10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2024512985081225224
 GameObject:
   m_ObjectHideFlags: 0

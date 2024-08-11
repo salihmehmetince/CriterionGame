@@ -33,6 +33,8 @@ public class L1GroupMember : MonoBehaviour
     private string []messages = { "Hey","Can you stop?","Stop please","Who are you?"};
     private float timer = 0f;
     private float timerMax = 5f;
+
+    private const string FINALISJUMPING = "IsJumping";
     // Start is called before the first frame update
     void Start()
     {
@@ -107,9 +109,16 @@ public class L1GroupMember : MonoBehaviour
         visualRun();
         Vector3 targetPosition=new Vector3(target.x,0f,target.z);
         agent.destination=targetPosition;
+        if (agent.isOnOffMeshLink)
+        {
+            animator.SetBool(FINALISRUNNING, false);
+            animator.SetTrigger(FINALISJUMPING);
+        }
         //transform.position = Vector3.MoveTowards(transform.position, targetPosition, followSpeed * Time.deltaTime);
 
     }
+
+
 
     private void stop()
     {
@@ -153,7 +162,6 @@ public class L1GroupMember : MonoBehaviour
 
     private void talk()
     {
-        Debug.Log(speechBox.name);
         speechBox.GetComponent<TextMeshPro>().text =messages[Random.Range(0, messages.Length)];
         Invoke(nameof(stopTalk), 3f);
     }
